@@ -10,6 +10,8 @@
 
 body {
   background: linear-gradient(90deg, #ecebff, #2c3c3d);
+  background-image: url("https://img.freepik.com/premium-photo/stars-galaxy-outer-space-sky-night-universe-black-starry-shiny-starfield_146539-1356.jpg");
+  color: #FFFFFF;
 }
 
 .tab {
@@ -60,12 +62,12 @@ body {
 }
 
 .screen {
-  /* background: linear-gradient(90deg, #2c3c3d, #ecebff); */
-  background: #2c3c3d;
+  background: linear-gradient(90deg, #2c3c3d, #798283);
+  /* background: #2c3c3d; */
   position: relative;
   height: 424px;
   width: 360px;
-  box-shadow: 0px 0px 24px #5c5696;
+  box-shadow: 0px 12px 30px 1px #000000;
 }
 
 .login {
