@@ -62,13 +62,12 @@ body {
 }
 
 .screen {
-  background: linear-gradient(90deg, #2c3c3d, #798283);
+  background: linear-gradient(120deg, #2c3c3d, #232424);
   /* background: #2c3c3d; */
   position: relative;
   height: 424px;
   width: 360px;
   box-shadow: 0px 12px 30px 1px #000000;
-  box-shadow: inset 0px 0px 30px 10px #00000034;
 }
 
 .login {
