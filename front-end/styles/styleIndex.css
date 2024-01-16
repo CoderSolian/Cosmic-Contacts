@@ -11,6 +11,7 @@
 body {
   background: linear-gradient(90deg, #ecebff, #2c3c3d);
   background-image: url("https://img.freepik.com/premium-photo/stars-galaxy-outer-space-sky-night-universe-black-starry-shiny-starfield_146539-1356.jpg");
+  background-size: 50%;
   color: #FFFFFF;
 }
 
