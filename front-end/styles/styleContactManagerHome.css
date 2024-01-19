@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Strait&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Strait", sans-serif;
+  text-decoration: none;
+  color: white;
+}
+body {
+  background: linear-gradient(90deg, #ecebff, #2c3c3d);
+  background-image: url("https://img.freepik.com/premium-photo/stars-galaxy-outer-space-sky-night-universe-black-starry-shiny-starfield_146539-1356.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+}
+
+.nav-bar li {
+  display: inline;
+  margin: 0 20px;
+  
+}
+
+.intro {
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.searchbar-input {
+  font-size: 25px;
+  width: 100%;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid #FFF;
+  background: rgba(28, 28, 28, 0.00);
+}
+
+.btn-search {
+  width: 38%;
+  height: 48px;
+  flex-shrink: 0;
+  flex-shrink: 0;
+  border: 1px solid #FFF;
+  background: rgba(192, 57, 57, 0);
+}
+
+.btn-add {
+  width: 200%;
+  height: 52px;
+  flex-shrink: 0;
+  border-left: 1px solid #ffffff;
+  background: linear-gradient(180deg, rgba(160, 160, 160, 0.70) 3.31%, rgba(217, 217, 217, 0.00) 143.75%);
+}
+
+.btn-delete {
+  width: 200%;
+  height: 52px;
+  flex-shrink: 0;
+  border-left: 1px solid #FFF;
+  background: #1C1C1C;
+}
+
+.nav-bar{
+  position: absolute;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+
+}
+
+
+.header-bar {
+  width: 100%; /* Make the width responsive */
+  height: 106px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  background: radial-gradient(8079.51% 68.93% at 36.7% 38.53%, #040507 0%, rgba(44, 52, 58, 0.41) 100%);
+  box-shadow: 0px 0px 45.8px 22px rgba(0, 0, 0, 0.25);
+  align-items: center;
+}
+
+/* @media screen and (max-width: 600px) {
+  .nav-bar {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+} */
+
+/* .header-bar{
+  width: 1440px;
+  height: 106px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  background: radial-gradient(8079.51% 68.93% at 36.7% 38.53%, #040507 0%, rgba(44, 52, 58, 0.41) 100%);
+  box-shadow: 0px 0px 45.8px 22px rgba(0, 0, 0, 0.25);
+} */
+
+
+.container.text-center {
+  color: black;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.container {
+  color: #000000;
+  background-color: grey;
+
+}
