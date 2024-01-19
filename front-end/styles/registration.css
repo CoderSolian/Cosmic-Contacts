@@ -35,7 +35,7 @@ body {
 }
 
 .login-container {
-  width: 75vw;
+  width: 50vw;
   height: 100vh;
   flex-shrink: 0;
   background: linear-gradient(
@@ -51,7 +51,7 @@ body {
 }
 
 .login-field {
-  padding: 1rem 32rem 1rem 4rem;
+  padding: 1rem 4rem 1rem 4rem;
   position: relative;
 }
 
@@ -73,6 +73,11 @@ body {
 .login-input:hover {
   outline: none;
   border-bottom-color: #ffffff;
+}
+
+.password-message {
+  color: rgba(255, 255, 255, 0.83);
+  margin: 2rem 0 0 4rem;
 }
 
 .buttons {
