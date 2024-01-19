@@ -24,6 +24,8 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: 11.257px;
+
+  cursor: pointer;
 }
 
 .login-container {
@@ -97,8 +99,8 @@
 
 .signup-button {
   /*positioning*/
-  width: 35%;
-  height: 72px;
+  width: 30%;
+  height: 60px;
   flex-shrink: 0;
   border-bottom: 1px solid #fff;
   background: linear-gradient(
@@ -110,8 +112,10 @@
   /* typography */
   color: rgba(255, 255, 255, 0.8);
   font-family: Strait;
-  font-size: 28px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
