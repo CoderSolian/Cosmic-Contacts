@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/registration.css" />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <div class="title" onclick="window.location.href='login.html'">
+        Cosmic Contacts
+      </div>
+      <form class="login" id="loginForm">
+        <div class="login-field">
+          <input
+            type="email"
+            class="login-input"
+            id="user_email"
+            placeholder="Enter your email address"
+            required
+          />
+        </div>
+        <div class="login-field">
+          <input
+            type="text"
+            class="login-input"
+            id="user_name"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="login-field">
+          <input
+            type="password"
+            class="login-input"
+            id="password"
+            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]){8,}"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div class="login-field">
+          <input
+            type="password"
+            class="login-input"
+            id="confirm-password"
+            placeholder="Confirm your password"
+            required
+          />
+        </div>
+        <div class="password-message">
+          <h3 style="text-decoration: underline">
+            Password must contain the following:
+          </h3>
+          <p id="length" class="invalid">Minimum 8 characters</p>
+          <p id="letter" class="invalid">A lowercase letter</p>
+          <p id="capital" class="invalid">A uppercase letter</p>
+          <p id="number" class="invalid">A number</p>
+          <p id="special" class="invalid">A special character (!@#$%^&*)</p>
+        </div>
+        <div class="buttons">
+          <button class="signup-button" type="submit">
+            Create account <i class="button-icon fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
