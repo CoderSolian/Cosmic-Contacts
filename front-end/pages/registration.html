@@ -14,7 +14,7 @@
       <form class="login" id="loginForm">
         <div class="login-field">
           <input
-            type="text"
+            type="email"
             class="login-input"
             id="user_email"
             placeholder="Enter your email address"
@@ -35,6 +35,7 @@
             type="password"
             class="login-input"
             id="password"
+            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])"
             placeholder="Enter your password"
             required
           />
@@ -44,7 +45,6 @@
             type="password"
             class="login-input"
             id="confirm-password"
-            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])"
             placeholder="Confirm your password"
             required
           />
