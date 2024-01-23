@@ -34,54 +34,20 @@
     <nav class="header-bar">
           <div class="nav-div">
             <div class="intro"><a href="#">Welcome, username</a> </div>
-            <ul>
-                <input 
-                  type="text" 
-                  class="searchbar-input"
-                  id = "searchbar"
-                  placeholder="Search.." 
-                  name="search">
-                </input>
-            <button type="button" class="btn-search" onclick="window.location.href='contactmanagersearch.html'">Search Contact</button>
+              <div class = "search-container">
+                  <input 
+                    type="text" 
+                    class="searchbar-input"
+                    id = "searchinput"
+                    placeholder="Search.." 
+                    name="search">
+                    <button type="image" class="btn-search"></button>
+                </div>
+            <div class ="button-container">
             <button type="button" class="btn-add" onclick="window.location.href='contactmanageradd.html'">Add Contact</button>
             <button type="button" class="btn-delete" onclick="window.location.href='contactmanagerdelete.html'">Delete Contact</button>
-          </ul>
-
-<!-- 
-        <div class = "searchbar">
-          <li>
-            <input 
-            type="text" 
-            class="searchbar-input"
-            id = "searchbar"
-            placeholder="Search.." 
-            name="search">
-            </input>
-          <button type="submit"><i class="searchBtn"></i></button>
-          </li>
+            </div>
           </div>
-        <div class="header-bar-buttons">
-          <div style="width: 100%; height: 100%; background: #1C1C1C; border-left: 1px white solid"></div>
-          <li>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='contactmanagersearch.html'">Search Contact</button>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='contactmanageradd.html'">Add Contact</button>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='contactmanagerdelete.html'">Delete Contact</button>
-          </li>
-          </div> -->
-        <!-- <div class="row">
-          <div class="col">
-            Welcome to Cosmic Contacts, username
-          </div>
-          <div class="col">
-            <button type="button" class="btn btn-primary" onclick="window.location.href='contactmanagersearch.html'">Search Contact</button>
-          </div>
-          <div class="col">
-            <button type="button" class="btn btn-primary" onclick="window.location.href='contactmanageradd.html'">Add Contact</button>
-            | 
-            <button type="button" class="btn btn-primary" onclick="window.location.href='contactmanagerdelete.html'">Delete Contact</button>
-          </div>
-        </div> -->
-    </div>
     </nav>
       
   </head>
