@@ -36,6 +36,7 @@ button{
   position: relative;
   align-items: center;
   margin-left: auto;
+  
 }
 
 .searchbar-input {
@@ -50,13 +51,26 @@ button{
 
 .btn-search {
   position: absolute;
-  height: 100%;
+  height: 30px;
   right: .3rem;
+  top: .3rem;
   border: none;
   background: url("../icons/magnifying-glass-color-white.png") no-repeat center center;
   width: 40px;
   border-radius: 0;
   background-size: contain;
+}
+
+.btn-add:hover{
+  background-color: #1C1C1C;
+}
+
+.btn-delete:hover{
+  background-color: #3e3d3dcd;
+}
+
+.btn-search:hover{
+  background-color: #31313156;
 }
 
 .button-container {
@@ -67,20 +81,22 @@ button{
 
 .btn-add {
   height: 40px;
+  width: 100px;
   flex-shrink: 0;
   border-left: 1px solid #ffffff;
   background: linear-gradient(180deg, rgba(160, 160, 160, 0.70) 3.31%, rgba(217, 217, 217, 0.00) 143.75%);
-  font-size: 11px;
+  font-size: 12px;
   border-radius: 0;
   margin-left: auto;
 }
 
 .btn-delete {
   height: 40px;
+  width: 100px;
   flex-shrink: 0;
   border-left: 1px solid #FFF;
   background: #1C1C1C;
-  font-size: 11px;
+  font-size: 12px;
   border-radius: 0;
 }
 
@@ -108,5 +124,14 @@ button{
 .container {
   color: #000000;
   background-color: grey;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 70%;
+  overflow: auto;
+  margin-top: 5rem;
+  margin-right: 3rem;
+  margin-bottom: 3rem;
+  
 
 }
