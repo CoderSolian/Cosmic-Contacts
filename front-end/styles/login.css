@@ -20,7 +20,9 @@ body {
   width: 307px;
   height: 110px;
   padding-top: 4rem;
+  /* changing this to 2 in register*/
   padding-left: 4rem;
+
 
   flex-shrink: 0;
   color: rgba(255, 255, 255, 0.85);
@@ -36,7 +38,10 @@ body {
 
 .login-container {
   width: 50vw;
-  height: 100vh;
+  /* height: 100vh; */
+  /* changes I made here */
+  height: 100%;
+  /* end of changes */
   flex-shrink: 0;
   background: linear-gradient(
     180deg,
