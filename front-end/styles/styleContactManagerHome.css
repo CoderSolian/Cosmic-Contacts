@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Strait&display=swap');
+@font-face {
+  font-family: "Nasalization";
+  src: url("./fonts/nasalization-rg.otf") format("opentype");
+} 
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Strait", sans-serif;
+  font-family: "Nasalization", sans-serif;
   text-decoration: none;
   color: white;
 }
@@ -61,22 +64,44 @@ button{
   background-size: contain;
 }
 
-.btn-add:hover{
+/* .btn-add:hover{
   background-color: #1C1C1C;
-}
+} */
 
-.btn-delete:hover{
+/* .btn-delete:hover{
   background-color: #3e3d3dcd;
 }
 
 .btn-search:hover{
   background-color: #31313156;
+} */
+
+.btn-search:active,
+.btn-search:focus,
+.btn-search:hover {
+  box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.3);
+}
+
+.btn-add:active,
+.btn-add:focus,
+.btn-add:hover {
+  box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.3);
+}
+
+.btn-delete:active,
+.btn-delete:focus,
+.btn-delete:hover {
+  box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.3);
 }
 
 .button-container {
   display: flex;
   justify-content: flex-end;
   margin-left: auto;
+}
+
+.button-container button {
+  padding: 0;
 }
 
 .btn-add {
@@ -88,6 +113,8 @@ button{
   font-size: 12px;
   border-radius: 0;
   margin-left: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-delete {
@@ -98,6 +125,7 @@ button{
   background: #1C1C1C;
   font-size: 12px;
   border-radius: 0;
+  /* box-shadow: 0px 0px 60.4px 49px rgba(66, 66, 66, 0.5); */
 }
 
 
@@ -114,24 +142,64 @@ button{
   align-items: center;
 }
 
+/* ---------- Contact box is now being styled below ----------- */
 
-.container.text-center {
-  color: black;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-.container {
-  color: #000000;
-  background-color: grey;
+.contacts-container {
+  color: #ffffff;
   position: absolute;
   right: 0;
-  width: 50%;
+  width: 70%;
   height: 70%;
   overflow: auto;
-  margin-top: 5rem;
-  margin-right: 3rem;
+  margin-top: 4rem;
+  margin-right: 1rem;
   margin-bottom: 3rem;
-  
 
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  background: radial-gradient(119.26% 84.25% at 97.19% 0%, rgba(44, 52, 58, 0.41) 0%, #040507 100%);
+  box-shadow: 0px 0px 60.4px 49px rgba(0, 0, 0, 0.50);
+}
+
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 1rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#first-name {
+  padding-left: 2rem;
+}
+
+#last-name {
+  padding-left: 3rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#phone-number {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.50);
+  border-right: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#email {
+  padding-left: 6rem;
+  padding-right: 6rem;
+  
+}
+
+#edit {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+.contact-person {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 1rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.50);
 }
