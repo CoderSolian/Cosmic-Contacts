@@ -17,10 +17,10 @@
     } 
     else
     {
-        // If we wanted to do hashes we could do that here with a simple hash>
+        // If we wanted to do hashes we could do that here with a simple hashing function.
         //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login>
+        $stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
         $stmt->execute();
         $stmt->close();
