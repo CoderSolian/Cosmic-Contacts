@@ -18,7 +18,7 @@
         $searchTerm = "%" . $inData["search"] . "%";
         
         // You can adjust the query based on the fields you want to search
-        $stmt = $conn->prepare("SELECT FirstName, LastName, Phone, Email FROM Contacts WHERE FirstName LIKE ?>
+        $stmt = $conn->prepare("SELECT FirstName, LastName, Phone, Email FROM Contacts WHERE FirstName LIKE ? OR LastName LIKE ? OR Phone LIKE ? OR Email LIKE ?");
         $stmt->bind_param("ssss", $searchTerm, $searchTerm, $searchTerm, $searchTerm);
         $stmt->execute();
         
