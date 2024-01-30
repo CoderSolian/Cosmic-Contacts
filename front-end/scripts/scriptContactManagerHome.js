@@ -20,4 +20,9 @@ function displayContacts() {
     contacts.forEach(contact => {
         console.log(contact);
     });
+
+function logout() {
+    // delete the token from the local storage
+    // redirect to login page
+}
 }
