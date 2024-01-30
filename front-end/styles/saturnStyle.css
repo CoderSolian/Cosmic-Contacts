@@ -1,0 +1,33 @@
+body {
+    display: flex;
+
+}
+#saturn {
+    position: relative;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    /* background: red; */
+    background: url("../images/2k_neptune.jpg") 0 0 repeat;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+
+    animation: rotate 4s linear infinite;
+    transition: transform 200ms linear;
+    transform-style: preserve-3d;
+    /* box-shadow: inset 20px 0 80px 6px rgba(0, 0, 0, 0.5);
+    color: #000; */
+}
+
+@keyframes rotate {
+    0% {
+        /* transform: rotate(0deg); */
+        background-position: 0 0;
+    }
+
+    100% {
+        /* transform: rotateY(360deg); */
+        background-position: 1048px 0;
+    }
+}
