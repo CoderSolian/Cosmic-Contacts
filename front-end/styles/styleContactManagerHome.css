@@ -32,7 +32,10 @@ body {
 }
 
 button{
-  background-color: black; margin-left: 10px; border-radius: 10px; padding: 10px; width: 90px;
+  background-color: black; 
+  /* margin-left: 10px;  */
+  border-radius: 10px; 
+  padding: 10px; width: 90px;
 }
 
 .search-container {
@@ -90,7 +93,13 @@ button{
 
 .btn-delete:active,
 .btn-delete:focus,
-.btn-delete:hover, .btn-logout:active, .btn-logout:focus, .btn-logout:hover {
+.btn-delete:hover, 
+.btn-logout:active, 
+.btn-logout:focus, 
+.btn-logout:hover,
+.btn-edit:active, 
+.btn-edit:focus, 
+.btn-edit:hover {
   box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.3);
 }
 
@@ -107,21 +116,34 @@ button{
 .btn-add {
   height: 40px;
   width: 100px;
+  margin-left: 1rem;
+  margin-right: 1rem;
   flex-shrink: 0;
   border-left: 1px solid #ffffff;
   background: linear-gradient(180deg, rgba(160, 160, 160, 0.70) 3.31%, rgba(217, 217, 217, 0.00) 143.75%);
   font-size: 12px;
   border-radius: 0;
-  margin-left: auto;
+  /* margin-left: auto; */
   justify-content: center;
   align-items: center;
 }
-
-.btn-delete, .btn-edit, .btn-logout {
+.btn-logout {
   height: 40px;
   width: 100px;
   flex-shrink: 0;
   border-left: 1px solid #FFF;
+  background: #1C1C1C;
+  font-size: 12px;
+  border-radius: 0;
+}
+
+
+.btn-delete, .btn-edit {
+  height: 40px;
+  /* width: 10px; */
+  flex-shrink: 0;
+  border-left: 1px solid #FFF;
+  
   background: #1C1C1C;
   font-size: 12px;
   border-radius: 0;
@@ -168,44 +190,117 @@ button{
   border-bottom: 1px solid rgba(255, 255, 255, 0.50);
 }
 
-#first-name {
-  padding-left: 2rem;
+#header-firstName {
+  padding-left: 2.15rem;
+  padding-right: 1rem;
 }
 
-#last-name {
-  padding-left: 3rem;
+#header-lastName {
+  padding-left: 2.8rem;
+  padding-right: 2rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
 }
 
-#phone-number {
-  padding-left: 1rem;
-  padding-right: 1rem;
+#header-phoneNumber {
+  padding-left: .5rem;
+  padding-right: .6rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
   border-right: 1px solid rgba(255, 255, 255, 0.50);
 }
 
-#email {
+#header-email {
   padding-left: 6rem;
   padding-right: 6rem;
   
 }
 
-#edit {
-  padding-right: 1rem;
-  padding-left: 1rem;
+#header-edit {
+  padding-right: .1rem;
+  padding-left: 1.5rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
 }
 
-#delete {
-  padding-right: 1rem;
-  padding-left: 1rem;
+#header-delete {
+  padding-right: .5rem;
+  padding-left: 1.1rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
 }
 
+
+/* ---------- Contact box is now being styled below ----------- */
 .contact-person {
   display: flex;
-  justify-content: space-between;
+  justify-content:flex-start;
   align-items: center;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 1rem .5rem .5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.50);
+  box-sizing: border-box;
+}
+
+h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#contact-firstName {
+  width: 14%;
+  padding-left: .1rem;
+  padding-right: .1rem;
+}
+
+#contact-lastName {
+  width: 16%;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.50);
+}
+
+#contact-phoneNumber {
+  width: 18%;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.50);
+  border-right: 2px solid rgba(255, 255, 255, 0.50);
+}
+
+#contact-email {
+  width: 33%;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border-right: 2px solid rgba(255, 255, 255, 0.50);
+  
+}
+
+#contact-edit {
+  width: 8%;
+  margin-left: .5rem;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  margin-right: .5rem;
+}
+
+/* .edit-button::after {
+  content: "";
+  border-right: 1px solid #ffffff;  /* Adjust color as needed */
+  /* height: 20%;
+  position: absolute;
+  
+  width: 1px;
+  top: 40%;  /* Adjust as needed to center vertically */
+
+
+
+#contact-spacer {
+  /* height: 30%;  */
+  font-size: 22px;
+  font-weight: 100;
+  color:  rgba(255, 255, 255, 0.50);
+}
+
+#contact-delete {
+  width: 8%;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  margin-left: .5rem;
 }
