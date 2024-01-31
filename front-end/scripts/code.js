@@ -1,4 +1,4 @@
-const urlBase = "http://cop43316.xyz/LAMPAPI";
+const urlBase = "http://54.82.88.73/php/";
 const extension = "php";
 
 let userId = 0;
@@ -67,24 +67,25 @@ function doSignup() {
   let password = document.getElementById("password").value;
 
   if (!validSignUpForm(firstName, lastName, username, password)) {
-    document.getElementById("signupResult").innerHTML = "invalid signup";
+    document.getElementById("signupResult").innerHTML = "Invalid credentials";
     return;
   }
 
-  var hash = md5(password);
+  // var hash = md5(password);
 
   document.getElementById("signupResult").innerHTML = "";
 
   let tmp = {
-    firstName: firstName,
-    lastName: lastName,
-    login: username,
-    password: hash,
+    FirstName: firstName,
+    LastName: lastName,
+    Login: username,
+    Password: password,
   };
 
   let jsonPayload = JSON.stringify(tmp);
 
-  let url = urlBase + "/SignUp." + extension;
+  let url = urlBase + "/Register." + extension;
+  // is it supposed to be /register or /Register?
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
@@ -96,16 +97,23 @@ function doSignup() {
         return;
       }
 
-      if (this.status == 409) {
+      if (this.status == 500) {
         document.getElementById("signupResult").innerHTML =
-          "User already exists";
+          "Internal server error occurred";
+        return;
+      }
+
+      if (this.status == 400) {
+        document.getElementById("signupResult").innerHTML =
+          "Provided data is invalid";
         return;
       }
 
       if (this.status == 200) {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
-        document.getElementById("signupResult").innerHTML = "User added";
+        document.getElementById("signupResult").innerHTML =
+          "User registered successfully";
         firstName = jsonObject.firstName;
         lastName = jsonObject.lastName;
         saveCookie();
