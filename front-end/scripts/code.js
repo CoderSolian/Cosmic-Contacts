@@ -18,7 +18,7 @@ function doLogin() {
   // var hash = md5(password);
   if (!validLoginForm(login, password)) {
     document.getElementById("loginResult").innerHTML =
-      "invalid username or password";
+      "<span style='color: #FF2F2F;'>Invalid credentials</span>";
     return;
   }
   document.getElementById("loginResult").innerHTML = "";
@@ -67,10 +67,11 @@ function doSignup() {
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
 
-  // if (!validSignUpForm(firstName, lastName, username, password)) {
-  //   document.getElementById("signupResult").innerHTML = "Invalid credentials";
-  //   return;
-  // } disable validation
+  if (!validSignUpForm(firstName, lastName, username, password)) {
+    document.getElementById("signupResult").innerHTML =
+      "<span style='color: #FF2F2F;'>Invalid credentials</span>";
+    return;
+  }
 
   // var hash = md5(password);
 
@@ -113,7 +114,7 @@ function doSignup() {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
         document.getElementById("signupResult").innerHTML =
-          "<span style='color: green;'>User registered successfully</span>";
+          "<span style='color: #6EFF2F;'>User registered successfully</span>";
         // document.getElementById("signupResult").innerHTML =
         //   "User registered successfully";
         firstName = jsonObject.firstName;
@@ -503,55 +504,55 @@ function validLoginForm(logName, logPass) {
   return true;
 }
 
-// function validSignUpForm(fName, lName, user, pass) {
-//   var fNameErr = (lNameErr = userErr = passErr = true);
+function validSignUpForm(fName, lName, user, pass) {
+  var fNameErr = (lNameErr = userErr = passErr = true);
 
-//   if (fName == "") {
-//     console.log("FIRST NAME IS BLANK");
-//   } else {
-//     console.log("first name IS VALID");
-//     fNameErr = false;
-//   }
+  if (fName == "") {
+    console.log("FIRST NAME IS BLANK");
+  } else {
+    console.log("first name IS VALID");
+    fNameErr = false;
+  }
 
-//   if (lName == "") {
-//     console.log("LAST NAME IS BLANK");
-//   } else {
-//     console.log("LAST name IS VALID");
-//     lNameErr = false;
-//   }
+  if (lName == "") {
+    console.log("LAST NAME IS BLANK");
+  } else {
+    console.log("LAST name IS VALID");
+    lNameErr = false;
+  }
 
-//   if (user == "") {
-//     console.log("USERNAME IS BLANK");
-//   } else {
-//     var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
+  if (user == "") {
+    console.log("USERNAME IS BLANK");
+  } else {
+    var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
 
-//     if (regex.test(user) == false) {
-//       console.log("USERNAME IS NOT VALID");
-//     } else {
-//       console.log("USERNAME IS VALID");
-//       userErr = false;
-//     }
-//   }
+    if (regex.test(user) == false) {
+      console.log("USERNAME IS NOT VALID");
+    } else {
+      console.log("USERNAME IS VALID");
+      userErr = false;
+    }
+  }
 
-//   if (pass == "") {
-//     console.log("PASSWORD IS BLANK");
-//   } else {
-//     var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
+  if (pass == "") {
+    console.log("PASSWORD IS BLANK");
+  } else {
+    var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
 
-//     if (regex.test(pass) == false) {
-//       console.log("PASSWORD IS NOT VALID");
-//     } else {
-//       console.log("PASSWORD IS VALID");
-//       passErr = false;
-//     }
-//   }
+    if (regex.test(pass) == false) {
+      console.log("PASSWORD IS NOT VALID");
+    } else {
+      console.log("PASSWORD IS VALID");
+      passErr = false;
+    }
+  }
 
-//   if ((fNameErr || lNameErr || userErr || passErr) == true) {
-//     return false;
-//   }
+  if ((fNameErr || lNameErr || userErr || passErr) == true) {
+    return false;
+  }
 
-//   return true;
-// }
+  return true;
+}
 
 function validAddContact(firstName, lastName, phone, email) {
   var fNameErr = (lNameErr = phoneErr = emailErr = true);
