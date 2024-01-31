@@ -1,4 +1,4 @@
-const urlBase = "http://54.82.88.73/php";
+const urlBase = "http://54.82.88.73/php/";
 const extension = "php";
 
 let userId = 0;
@@ -7,14 +7,15 @@ let lastName = "";
 const ids = [];
 
 function doLogin() {
+  console.log("doLogin() called");
   userId = 0;
   firstName = "";
   lastName = "";
 
-  let login = document.getElementById("loginName").value;
-  let password = document.getElementById("loginPassword").value;
+  let login = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
 
-  var hash = md5(password);
+  // var hash = md5(password);
   if (!validLoginForm(login, password)) {
     document.getElementById("loginResult").innerHTML =
       "invalid username or password";
@@ -24,14 +25,14 @@ function doLogin() {
 
   let tmp = {
     login: login,
-    password: hash,
+    password: password,
   };
 
   let jsonPayload = JSON.stringify(tmp);
-
-  let url = urlBase + "/Login." + extension;
+  let url = urlBase + "login." + extension;
 
   let xhr = new XMLHttpRequest();
+  console.log(jsonPayload, url);
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
   try {
@@ -49,7 +50,7 @@ function doLogin() {
         lastName = jsonObject.lastName;
 
         saveCookie();
-        window.location.href = "contacts.html";
+        window.location.href = "contactManagerHome.html";
       }
     };
 
@@ -66,10 +67,10 @@ function doSignup() {
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
 
-  if (!validSignUpForm(firstName, lastName, username, password)) {
-    document.getElementById("signupResult").innerHTML = "Invalid credentials";
-    return;
-  }
+  // if (!validSignUpForm(firstName, lastName, username, password)) {
+  //   document.getElementById("signupResult").innerHTML = "Invalid credentials";
+  //   return;
+  // } disable validation
 
   // var hash = md5(password);
 
@@ -84,7 +85,7 @@ function doSignup() {
 
   let jsonPayload = JSON.stringify(tmp);
 
-  let url = urlBase + "/register." + extension;
+  let url = urlBase + "register." + extension;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
@@ -112,7 +113,9 @@ function doSignup() {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
         document.getElementById("signupResult").innerHTML =
-          "User registered successfully";
+          "<span style='color: green;'>User registered successfully</span>";
+        // document.getElementById("signupResult").innerHTML =
+        //   "User registered successfully";
         firstName = jsonObject.firstName;
         lastName = jsonObject.lastName;
         saveCookie();
@@ -500,55 +503,55 @@ function validLoginForm(logName, logPass) {
   return true;
 }
 
-function validSignUpForm(fName, lName, user, pass) {
-  var fNameErr = (lNameErr = userErr = passErr = true);
+// function validSignUpForm(fName, lName, user, pass) {
+//   var fNameErr = (lNameErr = userErr = passErr = true);
 
-  if (fName == "") {
-    console.log("FIRST NAME IS BLANK");
-  } else {
-    console.log("first name IS VALID");
-    fNameErr = false;
-  }
+//   if (fName == "") {
+//     console.log("FIRST NAME IS BLANK");
+//   } else {
+//     console.log("first name IS VALID");
+//     fNameErr = false;
+//   }
 
-  if (lName == "") {
-    console.log("LAST NAME IS BLANK");
-  } else {
-    console.log("LAST name IS VALID");
-    lNameErr = false;
-  }
+//   if (lName == "") {
+//     console.log("LAST NAME IS BLANK");
+//   } else {
+//     console.log("LAST name IS VALID");
+//     lNameErr = false;
+//   }
 
-  if (user == "") {
-    console.log("USERNAME IS BLANK");
-  } else {
-    var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
+//   if (user == "") {
+//     console.log("USERNAME IS BLANK");
+//   } else {
+//     var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
 
-    if (regex.test(user) == false) {
-      console.log("USERNAME IS NOT VALID");
-    } else {
-      console.log("USERNAME IS VALID");
-      userErr = false;
-    }
-  }
+//     if (regex.test(user) == false) {
+//       console.log("USERNAME IS NOT VALID");
+//     } else {
+//       console.log("USERNAME IS VALID");
+//       userErr = false;
+//     }
+//   }
 
-  if (pass == "") {
-    console.log("PASSWORD IS BLANK");
-  } else {
-    var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
+//   if (pass == "") {
+//     console.log("PASSWORD IS BLANK");
+//   } else {
+//     var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
 
-    if (regex.test(pass) == false) {
-      console.log("PASSWORD IS NOT VALID");
-    } else {
-      console.log("PASSWORD IS VALID");
-      passErr = false;
-    }
-  }
+//     if (regex.test(pass) == false) {
+//       console.log("PASSWORD IS NOT VALID");
+//     } else {
+//       console.log("PASSWORD IS VALID");
+//       passErr = false;
+//     }
+//   }
 
-  if ((fNameErr || lNameErr || userErr || passErr) == true) {
-    return false;
-  }
+//   if ((fNameErr || lNameErr || userErr || passErr) == true) {
+//     return false;
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
 function validAddContact(firstName, lastName, phone, email) {
   var fNameErr = (lNameErr = phoneErr = emailErr = true);

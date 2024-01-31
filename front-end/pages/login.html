@@ -16,6 +16,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/login.css" />
     <link rel="stylesheet" href="../styles/saturnStyle.css" />
+    <script type="text/javascript" src="../scripts/code.js"></script>
   </head>
 
   <body>
@@ -28,7 +29,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
           <input
             type="text"
             class="login-input"
-            id="user_name"
+            id="username"
             placeholder="Enter your username"
             required
           />
@@ -42,8 +43,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
             required
           />
         </div>
+        <!-- login result -->
+        <span style="color: rgb(247, 197, 197)" id="loginResult"></span>
         <div class="buttons">
-          <button class="login-button" type="submit">
+          <button type="button" class="login-button" onclick="doLogin()">
             Log in <i class="button-icon fas fa-chevron-right"></i>
           </button>
           <button
