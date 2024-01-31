@@ -1,4 +1,4 @@
-const urlBase = "http://54.82.88.73/php/";
+const urlBase = "http://54.82.88.73/php";
 const extension = "php";
 
 let userId = 0;
@@ -84,8 +84,7 @@ function doSignup() {
 
   let jsonPayload = JSON.stringify(tmp);
 
-  let url = urlBase + "/Register." + extension;
-  // is it supposed to be /register or /Register?
+  let url = urlBase + "/register." + extension;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
