@@ -8,7 +8,7 @@
     $searchResults = "";
     $searchCount = 0;
 
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conn = new mysqli("database-1.cqhx72a1yicb.us-east-1.rds.amazonaws.com", "admin", "UCFucf2024", "ucf_person");
     if ($conn->connect_error) 
     {
         returnWithError($conn->connect_error);
