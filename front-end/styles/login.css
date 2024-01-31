@@ -87,9 +87,9 @@ body {
 }
 
 .buttons {
-  padding: 4rem 0 0 4rem;
+  padding: 4rem 0 4rem 4rem;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .login-button {
