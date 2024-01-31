@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/registration.css" />
     <link rel="stylesheet" href="../styles/saturnStyle.css" />
+    <script type="text/javascript" src="../scripts/code.js"></script>
+    <script type="text/javascript" src="../scripts/md5.js"></script>
   </head>
 
   <body>
@@ -13,7 +15,7 @@
         Cosmic Contacts
       </div>
       <form class="login" id="loginForm">
-        <div class="login-field">
+        <!-- <div class="login-field">
           <input
             type="email"
             class="login-input"
@@ -21,12 +23,30 @@
             placeholder="Enter your email address"
             required
           />
+        </div> -->
+        <div class="login-field">
+          <input
+            type="text"
+            class="login-input"
+            id="firstName"
+            placeholder="Enter your first name"
+            required
+          />
         </div>
         <div class="login-field">
           <input
             type="text"
             class="login-input"
-            id="user_name"
+            id="lastName"
+            placeholder="Enter your last name"
+            required
+          />
+        </div>
+        <div class="login-field">
+          <input
+            type="text"
+            class="login-input"
+            id="username"
             placeholder="Enter your username"
             required
           />
@@ -68,7 +88,8 @@
             <a href="login.html" id="login-link">Log in</a>
         </div>
       </form>
-    </div>
+      <!-- end of login container -->
+    </div> 
     <div id="saturn"></div>
   </body>
 </html>
