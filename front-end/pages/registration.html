@@ -73,9 +73,11 @@
         </div> -->
         <div class="password-message">
           <!-- signup result -->
-          <span style="color:rgb(247, 197, 197);" id="signupResult"></span>
+          <span style="color: rgb(247, 197, 197)" id="signupResult"></span>
           <!-- pass requirements -->
-          <h3 style="margin-bottom: 1rem;"">Password must contain the following:</h3>
+          <h3 style="margin-bottom: 1rem">
+            Password must contain the following:
+          </h3>
           <p id="length" class="invalid">Minimum 8 characters</p>
           <p id="letter" class="invalid">A lowercase letter</p>
           <p id="capital" class="invalid">A uppercase letter</p>
@@ -83,16 +85,22 @@
           <p id="special" class="invalid">A special character (!@#$%^&*)</p>
         </div>
         <div class="buttons">
-          <button type="button" class="signup-button" type="submit" onclick="doSignup()">
+          <button
+            type="button"
+            class="signup-button"
+            type="submit"
+            onclick="doSignup()"
+          >
             Create account <i class="button-icon fas fa-chevron-right"></i>
           </button>
           <p id="login-message">
             Already have an account?
             <a href="login.html" id="login-link">Log in</a>
+          </p>
         </div>
       </form>
       <!-- end of login container -->
-    </div> 
+    </div>
     <div id="saturn"></div>
   </body>
 </html>
