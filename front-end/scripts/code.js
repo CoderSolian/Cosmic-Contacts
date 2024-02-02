@@ -68,6 +68,7 @@ function doSignup() {
   let password = document.getElementById("password").value;
 
   if (!validSignUpForm(firstName, lastName, username, password)) {
+    document.getElementById("signupResult").style.display = "block";
     document.getElementById("signupResult").innerHTML =
       "<span style='color: #FF2F2F;'>Invalid credentials</span>";
     return;
