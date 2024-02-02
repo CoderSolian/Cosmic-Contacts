@@ -1,36 +1,70 @@
+const urlBase = "http://54.82.88.73/php/";
+const extension = "php";
 let contacts = [];
-
-// window.onload = function() {
-//     var btn = document.getElementById("addContactButton");
-//     var modal = document.getElementById("addContactModal");
-
-//     btn.onclick = function() {
-//         modal.style.display = "block";
-//     }
-
-//     // Rest of your code...
-// }
 
 // Get the button that opens the modal
 var addContactbtn = document.getElementById("addContactButton");
+var editContactbtn = document.getElementById("contact-edit");
+
 var span = document.getElementsByClassName("close")[0];
 // // Get the modal
-var modal = document.getElementById("addContactModal");
+var addModal = document.getElementById("addContactModal");
+var editModal = document.getElementById('editContactModal');
 
+editContactbtn.onclick = function() {
+    
+    editModal.style.display = "block";
+}
 // When the user clicks the button, open the modal 
 addContactbtn.onclick = function() {
-    modal.style.display = "block";
+    addModal.style.display = "block";
 }
-
+var editClose = document.getElementById("editClose");
+editClose.onclick = function() {
+    editModal.style.display = "none";
+}
 span.onclick = function() {
-    modal.style.display = "none";
+    addModal.style.display = "none";
 }
 
-window.onlcick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+var modalContent = document.getElementByID("modalContent");
+
+window.oncick = function(event) {
+    if (event.target == modalContent) {
+        addModal.style.display = "none";
     }
 }
+
+document.getElementById('contact-edit').addEventListener('click', function() {
+    // Get the modal
+    var editModal = document.getElementById('editContactModal');
+
+    // Open the modal
+    editModal.style.display = "block";
+});
+
+document.getElementById('editContactForm').addEventListener('submit', function(event) {
+    // Get the input fields
+    var firstName = document.getElementById('modal-firstName');
+    var lastName = document.getElementById('modal-lastName');
+    var phone = document.getElementById('modal-phone');
+    var email = document.getElementById('modal-email');
+
+    // Validate the input fields
+    if (firstName.value === '' || lastName.value === '' || phone.value === '') {
+        // Prevent the form submission
+        event.preventDefault();
+
+        // Display an error message
+        alert('All fields must be filled out');
+    }
+});
+
+
+
+
+// good so far up _________________________________&&
+
 
 // Get the button that adds a new contact
 var addBtn = document.getElementById("addNewContactButton");
@@ -49,10 +83,43 @@ addBtn.onclick = function() {
     }
 
     // If the input is valid, add the contact
-    addContact({ firstName: firstName, lastName: lastName, email: email, phoneNumber: phone });
-    updateUIwithNewContact({ firstName: firstName, lastName: lastName, email: email, phoneNumber: phone }, contacts.length - 1);
-    modal.style.display = "none";
+    // addContact({ firstName: firstName, lastName: lastName, email: email, phoneNumber: phone });
+    // updateUIwithNewContact({ firstName: firstName, lastName: lastName, email: email, phoneNumber: phone }, contacts.length - 1);
+    // modal.style.display = "none";
+
+    let tmp = {
+        firstName: firstname,
+        lastName: lastname,
+        phoneNumber: phonenumber,
+        emailAddress: emailaddress,
+        userId: userId,
+      };
+    
+      let jsonPayload = JSON.stringify(tmp);
+    
+      let url = urlBase + "/AddContacts." + extension;
+    
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+      try {
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log("Contact has been added");
+            // Clear input fields in form
+            document.getElementById("addMe").reset();
+            // reload contacts table and switch view to show
+            loadContacts();
+            showTable();
+          }
+        };
+        xhr.send(jsonPayload);
+      } catch (err) {
+        console.log(err.message);
+      }
 }
+    
+
 
 function addContact(contact) {
     contacts.push(contact);
