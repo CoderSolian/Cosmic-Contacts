@@ -109,13 +109,13 @@
       //password message displays
       passform.onfocus = function () {
         document.getElementById("pass-requirements").style.display = "block";
-        document.getElementById("signupResult").style.display = "none";
+        // document.getElementById("signupResult").style.display = "none";
       };
 
       //password message goes away
       passform.onblur = function () {
-        document.getElementById("signupResult").style.display = "block";
         document.getElementById("pass-requirements").style.display = "none";
+        // document.getElementById("signupResult").style.display = "block";
       };
 
       //password validation
@@ -169,7 +169,7 @@
         ) {
           document.getElementById("mustcontain").innerHTML =
             "Password meets requirements";
-          document.getElementById("mustcontain").style.color = "green";
+          document.getElementById("mustcontain").style.color = "#6EFF2F";
         } else {
           document.getElementById("mustcontain").innerHTML =
             "Password must contain the following:";

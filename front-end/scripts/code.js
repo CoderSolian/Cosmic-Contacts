@@ -114,8 +114,8 @@ function doSignup() {
       if (this.status == 200) {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
-        document.getElementById("signupResult").innerHTML =
-          "<span style='color: #6EFF2F;'>User registered successfully</span>";
+        // document.getElementById("signupResult").innerHTML =
+        //   "<span style='color: #6EFF2F;'>User registered successfully</span>";
         // document.getElementById("signupResult").innerHTML =
         //   "User registered successfully";
         firstName = jsonObject.firstName;
@@ -125,6 +125,8 @@ function doSignup() {
     };
 
     xhr.send(jsonPayload);
+    document.getElementById("signupResult").innerHTML =
+          "<span style='color: #6EFF2F;'>User registered successfully</span>";
   } catch (err) {
     document.getElementById("signupResult").innerHTML = err.message;
   }
