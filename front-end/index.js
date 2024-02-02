@@ -1,9 +1,15 @@
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 
 http.createServer(function (req, res) {
-  // Read the content of the HTML file
-  fs.readFile('./index.html', function(err, data) {
+  // Extract the file name from the request URL
+  var fileName = req.url === '/' ? 'index.html' : req.url;
+  // Construct the file path
+  var filePath = path.join(__dirname, fileName);
+  
+  // Read the content of the requested file
+  fs.readFile(filePath, function(err, data) {
     if (err) {
       // Handle error, such as file not found
       res.writeHead(404, {'Content-Type': 'text/html'});
