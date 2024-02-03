@@ -1,5 +1,6 @@
 const urlBase = "http://54.82.88.73/php/";
 const extension = "php";
+export { userId, username };
 
 let userId = 0;
 let firstName = "";
