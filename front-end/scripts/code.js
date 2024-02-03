@@ -40,7 +40,7 @@ function doLogin() {
       if (this.readyState == 4 && this.status == 200) {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
-
+        console.log("userIdjson: " + userId);
         if (userId < 1) {
           document.getElementById("loginResult").innerHTML =
             "User/Password combination incorrect";
@@ -50,8 +50,12 @@ function doLogin() {
         lastName = jsonObject.lastName;
         console.log('Welcome, ' + userId + '!');
 
-        saveCookie();
-        // window.location.href = "contactManagerHome.html";
+        // saveCookie();
+        // Store userId in localStorage
+        localStorage.setItem('userId', userId);
+        // Retrieve userId from localStorage
+        let userId = localStorage.getItem('userId');
+        window.location.href = "contactManagerHome.html";
       }
     };
 
@@ -154,6 +158,7 @@ function saveCookie() {
 
 // ------ readCookie() ------------------------
 function readCookie() {
+  console.log("userId: " + userId);
   userId = -1;
   let data = document.cookie;
   let splits = data.split(",");
@@ -161,7 +166,7 @@ function readCookie() {
   for (var i = 0; i < splits.length; i++) {
     let thisOne = splits[i].trim();
     let tokens = thisOne.split("=");
-    console.log(tokens[0]);
+    // console.log(tokens[0]);
 
     if (tokens[0] == "firstName") {
       firstName = tokens[1];
@@ -171,6 +176,8 @@ function readCookie() {
       userId = parseInt(tokens[1].trim());
     }
   }
+
+  console.log("userId: " + userId);
 
   if (userId < 0) {
     // window.location.href = "login.html";
