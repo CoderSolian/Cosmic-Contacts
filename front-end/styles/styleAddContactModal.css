@@ -51,7 +51,7 @@
     align-items: center;
   }
 
-  #addNewContactButton {
+  #addNewContactButton, #editContactButton {
     background: linear-gradient(180deg, rgba(10, 10, 10, 0.7) 3.31%, rgba(217, 217, 217, 0.00) 143.75%);
     font-size: 12px;
     border-radius: 0;
