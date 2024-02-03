@@ -12,12 +12,13 @@ body {
   background-size: cover;
   background-position: center;
 
-  animation: rotate 4s linear infinite;
+  animation: rotate 5s linear infinite;
   transition: transform 200ms linear;
   transform-style: preserve-3d;
-  box-shadow: inset 20px 0 80px 6px rgba(0, 0, 0, 1), 0 0 80px 40px rgba(0, 0, 0, 0.556);
+  box-shadow: inset 20px 0 80px 6px rgba(0, 0, 0, 1),
+    0 0 80px 40px rgba(0, 0, 0, 0.556);
 
-  transform: rotate(28deg);
+  transform: rotate(15deg);
 }
 
 @keyframes rotate {
