@@ -127,6 +127,7 @@ button{
   justify-content: center;
   align-items: center;
 }
+
 .btn-logout {
   height: 40px;
   width: 100px;
@@ -140,9 +141,11 @@ button{
 
 .btn-delete, .btn-edit {
   height: 40px;
-  /* width: 10px; */
+  width: 7%;
   flex-shrink: 0;
   border-left: 1px solid #FFF;
+  margin-left: .5rem;
+  margin-right: .2rem;
   
   background: #1C1C1C;
   font-size: 12px;
@@ -184,45 +187,41 @@ button{
 
 .contacts-header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 0rem 1rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.50);
 }
 
-#header-firstName {
-  padding-left: 2.15rem;
-  padding-right: 1rem;
+#header-name {
+  padding-left: 2.6rem;
+  padding-right: 2.6rem;
 }
 
-#header-lastName {
-  padding-left: 2.8rem;
-  padding-right: 2rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.50);
-}
+
 
 #header-phoneNumber {
-  padding-left: .5rem;
-  padding-right: .6rem;
+  padding-left: 1.65rem;
+  padding-right: 1.65rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
   border-right: 1px solid rgba(255, 255, 255, 0.50);
 }
 
 #header-email {
-  padding-left: 6rem;
-  padding-right: 6rem;
+  padding-left: 9.35rem;
+  padding-right: 9.35rem;
   
 }
 
 #header-edit {
-  padding-right: .1rem;
-  padding-left: 1.5rem;
+  padding-right: 1.4rem;
+  padding-left: 1.4rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
 }
 
 #header-delete {
-  padding-right: .5rem;
-  padding-left: 1.1rem;
+  /* padding-right: 1rem; */
+  padding-left: 1rem;
   border-left: 1px solid rgba(255, 255, 255, 0.50);
 }
 
@@ -243,21 +242,16 @@ h4 {
   text-overflow: ellipsis;
 }
 
-#contact-firstName {
-  width: 14%;
+#contact-name {
+  width: 25%;
   padding-left: .1rem;
   padding-right: .1rem;
 }
 
-#contact-lastName {
-  width: 16%;
-  padding-left: .5rem;
-  padding-right: .5rem;
-  border-left: 2px solid rgba(255, 255, 255, 0.50);
-}
+
 
 #contact-phoneNumber {
-  width: 18%;
+  width: 22%;
   padding-left: .5rem;
   padding-right: .5rem;
   border-left: 2px solid rgba(255, 255, 255, 0.50);
@@ -265,7 +259,7 @@ h4 {
 }
 
 #contact-email {
-  width: 33%;
+  width: 38%;
   padding-left: .5rem;
   padding-right: .5rem;
   border-right: 2px solid rgba(255, 255, 255, 0.50);

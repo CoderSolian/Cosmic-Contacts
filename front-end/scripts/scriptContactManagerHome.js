@@ -2,6 +2,14 @@ const urlBase = "http://54.82.88.73/php/";
 const extension = "php";
 let contacts = [];
 
+// Get the user's ID from the local storage
+let userId = localStorage.getItem('userId');
+
+// Setting the welcome message
+let intro = document.getElementById("intro");
+intro.textContent = 'Welcome, ' + username + '!';
+
+
 // Get the buttons
 let addContactbtn = document.getElementById("addContactButton");
 let editContactbtn = document.getElementById("contact-editBtn");
