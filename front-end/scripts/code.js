@@ -61,13 +61,16 @@ function doLogin() {
 }
 
 function doSignup() {
+  console.log("doSignup() called");
   firstName = document.getElementById("firstName").value;
   lastName = document.getElementById("lastName").value;
 
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
 
+  // if there are invalid credentials in any of the fields, display "Invalid credentials"
   if (!validSignUpForm(firstName, lastName, username, password)) {
+    document.getElementById("signupResult").style.display = "block";
     document.getElementById("signupResult").innerHTML =
       "<span style='color: #FF2F2F;'>Invalid credentials</span>";
     return;
@@ -75,7 +78,7 @@ function doSignup() {
 
   // var hash = md5(password);
 
-  document.getElementById("signupResult").innerHTML = "";
+  // document.getElementById("signupResult").innerHTML = "";
 
   let tmp = {
     FirstName: firstName,
@@ -113,8 +116,8 @@ function doSignup() {
       if (this.status == 200) {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
-        document.getElementById("signupResult").innerHTML =
-          "<span style='color: #6EFF2F;'>User registered successfully</span>";
+        // document.getElementById("signupResult").innerHTML =
+        //   "<span style='color: #6EFF2F;'>User registered successfully</span>";
         // document.getElementById("signupResult").innerHTML =
         //   "User registered successfully";
         firstName = jsonObject.firstName;
@@ -124,6 +127,8 @@ function doSignup() {
     };
 
     xhr.send(jsonPayload);
+    document.getElementById("signupResult").innerHTML =
+      "<span style='color: #6EFF2F;'>User registered successfully</span>";
   } catch (err) {
     document.getElementById("signupResult").innerHTML = err.message;
   }

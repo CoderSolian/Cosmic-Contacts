@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../styles/registration.css" />
     <link rel="stylesheet" href="../styles/styleNeptune.css" />
     <script type="text/javascript" src="../scripts/code.js"></script>
@@ -15,15 +16,6 @@
         Cosmic Contacts
       </div>
       <form class="login" id="loginForm">
-        <!-- <div class="login-field">
-          <input
-            type="email"
-            class="login-input"
-            id="user_email"
-            placeholder="Enter your email address"
-            required
-          />
-        </div> -->
         <div class="login-field">
           <input
             type="text"
@@ -61,28 +53,32 @@
             required
           />
         </div>
-        <!-- <div class="login-field">
-          <input
-            type="password"
-            class="login-input"
-            id="confirm-password"
-            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]){8,}"
-            placeholder="Confirm your password"
-            required
-          />
-        </div> -->
-        <div class="password-message">
-          <!-- signup result -->
-          <span style="color: rgb(247, 197, 197)" id="signupResult"></span>
+        <!-- signup result -->
+        <span
+          style="color: rgb(247, 197, 197)"
+          id="signupResult"
+          style="display: block"
+        ></span>
+        <div
+          class="password-message"
+          id="pass-requirements"
+          style="display: none"
+        >
           <!-- pass requirements -->
-          <h3 style="margin-bottom: 1rem">
+          <h3
+            id="mustcontain"
+            style="margin-bottom: 1rem"
+            style="display: none"
+          >
             Password must contain the following:
           </h3>
-          <p id="length" class="invalid">Minimum 8 characters</p>
-          <p id="letter" class="invalid">A lowercase letter</p>
-          <p id="capital" class="invalid">A uppercase letter</p>
-          <p id="number" class="invalid">A number</p>
-          <p id="special" class="invalid">A special character (!@#$%^&*)</p>
+          <span class="requirements" style="color: red">
+            <p id="length" class="invalid">Minimum 8 characters</p>
+            <p id="letter" class="invalid">A lowercase letter</p>
+            <p id="capital" class="invalid">A uppercase letter</p>
+            <p id="number" class="invalid">A number</p>
+            <p id="special" class="invalid">A special character (!@#$%^&*)</p>
+          </span>
         </div>
         <div class="buttons">
           <button
@@ -101,6 +97,85 @@
       </form>
       <!-- end of login container -->
     </div>
-    <div id="saturn"></div>
+    <div id="neptune"></div>
+    <!--code for password criteria message-->
+    <script>
+      let passform = document.getElementById("password");
+      let pNumInput = document.getElementById("passNum");
+      let pLettInput = document.getElementById("passLett");
+      let pSpecInput = document.getElementById("passSpec");
+      let pLenInput = document.getElementById("passLen");
+
+      //password message displays
+      passform.onfocus = function () {
+        document.getElementById("pass-requirements").style.display = "block";
+        // document.getElementById("signupResult").style.display = "none";
+      };
+
+      //password message goes away
+      passform.onblur = function () {
+        // document.getElementById("pass-requirements").style.display = "none";
+        // document.getElementById("signupResult").style.display = "block";
+      };
+
+      //password validation
+      passform.onkeyup = function () {
+        var nums = /[0-9]/g;
+        var lowercase = /[a-z]/g;
+        var uppercase = /[A-Z]/g;
+        var spec = /[!@#$%^&*]/g;
+
+        //check length
+        if (passform.value.length >= 8) {
+          document.getElementById("length").style.display = "none";
+        } else {
+          document.getElementById("length").style.display = "block";
+        }
+
+        //check numbers
+        if (passform.value.match(nums)) {
+          document.getElementById("number").style.display = "none";
+        } else {
+          document.getElementById("number").style.display = "block";
+        }
+
+        //check lowercase
+        if (passform.value.match(lowercase)) {
+          document.getElementById("letter").style.display = "none";
+        } else {
+          document.getElementById("letter").style.display = "block";
+        }
+
+        //check uppercase
+        if (passform.value.match(uppercase)) {
+          document.getElementById("capital").style.display = "none";
+        } else {
+          document.getElementById("capital").style.display = "block";
+        }
+
+        //check special characters
+        if (passform.value.match(spec)) {
+          document.getElementById("special").style.display = "none";
+        } else {
+          document.getElementById("special").style.display = "block";
+        }
+
+        if (
+          passform.value.match(nums) &&
+          passform.value.match(lowercase) &&
+          passform.value.match(uppercase) &&
+          passform.value.match(spec) &&
+          passform.value.length >= 8
+        ) {
+          document.getElementById("mustcontain").innerHTML =
+            "Password meets requirements";
+          document.getElementById("mustcontain").style.color = "#6EFF2F";
+        } else {
+          document.getElementById("mustcontain").innerHTML =
+            "Password must contain the following:";
+          document.getElementById("mustcontain").style.color = "white";
+        }
+      };
+    </script>
   </body>
 </html>

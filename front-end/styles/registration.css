@@ -54,7 +54,7 @@ body {
     rgba(44, 52, 58, 0.41) -46.36%,
     #040507 94.48%
   );
-  box-shadow: 0px 0px 45.8px 30px rgba(127, 127, 127, 0.101);
+  box-shadow: 0px 0px 45.8px 50px rgba(0, 0, 0, 0.6);
 }
 
 #loginForm {
@@ -88,6 +88,11 @@ body {
 
 .password-message {
   color: rgba(255, 255, 255, 0.83);
+  margin: 0 0 0 4rem;
+  transition: 0.2s;
+}
+
+#signupResult {
   margin: 0 0 0 4rem;
   transition: 0.2s;
 }
