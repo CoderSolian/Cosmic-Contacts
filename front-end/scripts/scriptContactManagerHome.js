@@ -2,71 +2,71 @@ const urlBase = "http://54.82.88.73/php/";
 const extension = "php";
 let contacts = [];
 
-// Get the button that opens the modal
-var addContactbtn = document.getElementById("addContactButton");
-var editContactbtn = document.getElementById("contact-edit");
+// Get the buttons
+let addContactbtn = document.getElementById("addContactButton");
+let editContactbtn = document.getElementById("contact-editBtn");
+let deleteContactbtn = document.getElementById("contact-deleteBtn");
+let logoutUserbtn = document.getElementById("btn-logout");
 
-var span = document.getElementsByClassName("close")[0];
-// // Get the modal
-var addModal = document.getElementById("addContactModal");
-var editModal = document.getElementById('editContactModal');
+// Get the modal
+let modal = document.getElementById("contactModal");
 
-editContactbtn.onclick = function() {
+// When the user clicks the edit or add button, open the modal
+function contactButtonClick(intbtnPressed) {
+    let span = document.getElementsByClassName("close")[0];
     
-    editModal.style.display = "block";
-}
-// When the user clicks the button, open the modal 
-addContactbtn.onclick = function() {
-    addModal.style.display = "block";
-}
-var editClose = document.getElementById("editClose");
-editClose.onclick = function() {
-    editModal.style.display = "none";
-}
-span.onclick = function() {
-    addModal.style.display = "none";
-}
+    modal.style.display = "block";
 
-var modalContent = document.getElementByID("modalContent");
-
-window.oncick = function(event) {
-    if (event.target == modalContent) {
-        addModal.style.display = "none";
+    span.onclick = function() {
+        modal.style.display = "none";
     }
+
+    window.oncick = function(event) {
+        if (event.target == modalContent) {
+            addModal.style.display = "none";
+        }
+    }
+
+    // add contact
+    if (intbtnPressed === 1) {
+        document.getElementById('modal-title').textContent = 'Add Contact';
+        document.getElementById('addNewContactButton').textContent = 'Add New Contact';
+        var name = document.getElementById('add-name');
+        var phone = document.getElementById('edit-phone');
+        var email = document.getElementById('edit-email');
+    }
+
+    // edit contact
+    if (intbtnPressed === 2) {
+        document.getElementById('modal-title').textContent = 'Edit Contact';
+        document.getElementById('addNewContactButton').textContent = 'Save Changes';
+        var name = document.getElementById('add-name').value = "random person";
+        var phone = document.getElementById('add-phone').value = "123-456-7890";
+        var email = document.getElementById('add-email'). value = "email@www.com";
+    }
+
+    console.log('Edit or Add button clicked');
 }
 
-document.getElementById('contact-edit').addEventListener('click', function() {
-    // Get the modal
-    var editModal = document.getElementById('editContactModal');
+// Add event listeners to the add and edit buttons
+addContactbtn.addEventListener('click', function() { contactButtonClick(1); });
+editContactbtn.addEventListener('click', function() { contactButtonClick(2); });
 
-    // Open the modal
-    editModal.style.display = "block";
-});
 
-document.getElementById('editContactForm').addEventListener('submit', function(event) {
-    // Get the input fields
-    var firstName = document.getElementById('modal-firstName');
-    var lastName = document.getElementById('modal-lastName');
-    var phone = document.getElementById('modal-phone');
-    var email = document.getElementById('modal-email');
 
-    // Validate the input fields
-    if (firstName.value === '' || lastName.value === '' || phone.value === '') {
-        // Prevent the form submission
-        event.preventDefault();
 
-        // Display an error message
-        alert('All fields must be filled out');
-    }
-});
 
+
+deleteContactbtn.onclick = function() {
+    confirm('Delete button clicked');
+};
 
 
 
 // good so far up _________________________________&&
 
 
-// Get the button that adds a new contact
+// Get the button that adds a new contact created or edited
 var addBtn = document.getElementById("addNewContactButton");
 
 // When the user clicks the add contact button in the modal, validate the input and add the contact

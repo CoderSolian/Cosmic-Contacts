@@ -46,7 +46,6 @@
                 </div>
             <div class ="button-container">
             <button type="button" id="addContactButton" class="btn-add" >Add Contact</button>
-            <!-- onclick="window.location.href='contactmanageradd.html'" -->
             <button type="button" class="btn-logout" onclick="window.location.href='../pages/login.html'">Logout</button>
             </div>
           </div>
@@ -56,43 +55,21 @@
 
   <body>
 
-    <!-- Add Contact Modal -->
-    <div id="addContactModal" class="modal">
+    <!-- Add/Edit Contact Modal -->
+    <div id="contactModal" class="modal">
       <div id= "modalContent" class="modal-content">
         <div class = "modal-header">
-          <h2 id = "modal-title">Add Contact</h2>
+          <h2 id = "modal-title"></h2>
           <span class="close">&times;</span>
         </div>
-        <label for="add-firstName">First Name:</label>
-        <input type="text" id="add-firstName" class = "modal-firstName="newContactFirstName">
-        <label for="add-lastName">Last Name:</label>
-        <input type="text" id="add-lastName" class = "modal-lastName" name="newContactLastName">
+
+        <label for="add-name">Contact Name:</label>
+        <input type="text" id="add-name" class = "modal-name" name="newContactName">
         <label for="add-phone">Phone Number:</label>
         <input type="text" id="add-phone" class = "modal-phone" name="newContactPhone">
         <label for="add-email">Email:</label>
         <input type="text" id="add-email" class = "modal-email" name="newContactEmail">
-        <button id="addNewContactButton">Add Contact</button>
-      </div>
-    </div>
-
-    <!-- Edit Contact Modal -->
-    <div id="editContactModal" class="modal">
-      <div id ="modalContent" class="modal-content">
-        <div class ="modal-header">
-          <h2 id = "modal-title">Edit Contact: </h2>
-          <span id = "editClose" class="close">&times;</span>
-        </div>
-        <h2 id = "contactName" >First Last Name</h2>
-        <label for="edit-firstName">First Name:</label>
-        <input type="text" id="edit-firstName" class = "modal-firstName" name="editContactFirst">
-        <label for="edit-lastName">Last Name:</label>
-        <input type="text" id="edit-lastName" class = "modal-lastName" name="editContactLast">
-        <label for="edit-phone">Phone Number:</label>
-        <input type="text" id="edit-phone" class = "modal-phone" name="editContactPhone">
-        <label for="edit-email">Email:</label>
-        <input type="text" id="edit-email" class = "modal-email" name="editContactEmail">
-        <button id="addNewContactButton">Save Changes</button>
-
+        <button id="addNewContactButton"></button>
       </div>
     </div>
 
@@ -113,9 +90,9 @@
           <h4 id = "contact-lastName">Person</h4>
           <h4 id = "contact-phoneNumber">(123) 456-7890</h4>
           <h4 id = "contact-email"> random.person@gmail.com </h4>
-          <button type="button" id = "contact-edit" class="btn-edit">Edit</button>
+          <button type="button" id = "contact-editBtn" class="btn-edit">Edit</button>
           <h4 id = "contact-spacer">|</h4>
-          <button type="button" id = "contact-delete" class="btn-delete">Delete</button>
+          <button type="button" id = "contact-deleteBtn" class="btn-delete">Delete</button>
         </div>
       </div>
     </div>
