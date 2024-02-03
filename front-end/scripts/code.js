@@ -6,6 +6,9 @@ let firstName = "";
 let lastName = "";
 const ids = [];
 
+function logUserId() {
+  console.log("the user id is " + userId);
+}
 function doLogin() {
   console.log("doLogin() called");
   userId = 0;
@@ -48,10 +51,10 @@ function doLogin() {
         }
         firstName = jsonObject.firstName;
         lastName = jsonObject.lastName;
-        console.log('Welcome, ' + userId + '!');
+        console.log("Welcome, " + userId + "!");
 
-        saveCookie();
-        // window.location.href = "contactManagerHome.html";
+        saveData();
+        window.location.href = "contactManagerHome.html";
       }
     };
 
@@ -123,7 +126,7 @@ function doSignup() {
         //   "User registered successfully";
         firstName = jsonObject.firstName;
         lastName = jsonObject.lastName;
-        saveCookie();
+        saveData();
       }
     };
 
@@ -135,50 +138,105 @@ function doSignup() {
   }
 }
 
-// saveCookie()
-function saveCookie() {
-  let minutes = 20;
-  let date = new Date();
-  date.setTime(date.getTime() + minutes * 60 * 1000);
-
-  document.cookie =
-    "firstName=" +
-    firstName +
-    ",lastName=" +
-    lastName +
-    ",userId=" +
-    userId +
-    ";expires=" +
-    date.toGMTString();
+function saveData() {
+  let user = {
+    firstName: firstName,
+    lastName: lastName,
+    userId: userId,
+  };
+  localStorage.setItem("user", JSON.stringify(user));
 }
+
+function loadData() {
+  let user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+    firstName = user.firstName;
+    lastName = user.lastName;
+    userId = user.userId;
+  }
+}
+// saveCookie()
+// function saveCookie() {
+//   let minutes = 20;
+//   let date = new Date();
+//   date.setTime(date.getTime() + minutes * 60 * 1000);
+
+//   document.cookie =
+//     "firstName=" +
+//     firstName +
+//     ",lastName=" +
+//     lastName +
+//     ",userId=" +
+//     userId +
+//     ";expires=" +
+//     date.toGMTString();
+
+//   console.log(
+//     `document.cookie = "firstName=${firstName},lastName=${lastName},userId=${userId};expires=${date.toGMTString()}";`
+//   );
+// }
 
 // ------ readCookie() ------------------------
-function readCookie() {
-  userId = -1;
-  let data = document.cookie;
-  let splits = data.split(",");
+// function readCookie() {
+//   userId = -1;
+//   let data = document.cookie;
+//   console.log("data: " + data);
+//   let splits = data.split(",");
 
-  for (var i = 0; i < splits.length; i++) {
-    let thisOne = splits[i].trim();
-    let tokens = thisOne.split("=");
-    console.log(tokens[0]);
+//   for (var i = 0; i < splits.length; i++) {
+//     let thisOne = splits[i].trim();
+//     let tokens = thisOne.split("=");
+//     console.log(tokens[0]);
 
-    if (tokens[0] == "firstName") {
-      firstName = tokens[1];
-    } else if (tokens[0] == "lastName") {
-      lastName = tokens[1];
-    } else if (tokens[0] == "userId") {
-      userId = parseInt(tokens[1].trim());
-    }
-  }
+//     if (tokens[0] == "firstName") {
+//       firstName = tokens[1];
+//     } else if (tokens[0] == "lastName") {
+//       lastName = tokens[1];
+//     } else if (tokens[0] == "userId") {
+//       userId = parseInt(tokens[1].trim());
+//     }
+//   }
 
-  if (userId < 0) {
-    // window.location.href = "login.html";
-  } else {
-    document.getElementById("intro").innerHTML =
-      "Welcome, " + firstName + " " + lastName + "!";
-  }
-}
+//   if (userId < 0) {
+//     // window.location.href = "login.html";
+//   } else {
+//     document.getElementById("intro").innerHTML =
+//       "Welcome, " + firstName + " " + lastName + "!";
+//   }
+// }
+
+// function readCookie() {
+//   let cookies = document.cookie.split(";").map((cookie) => cookie.trim());
+
+//   let firstName = "";
+//   let lastName = "";
+//   let userId = -1;
+
+//   console.log(firstName, lastName, userId);
+//   for (let cookie of cookies) {
+//     let [key, value] = cookie.split("=");
+//     switch (key.trim()) {
+//       case "firstName":
+//         firstName = value;
+//         break;
+//       case "lastName":
+//         lastName = value;
+//         break;
+//       case "userId":
+//         userId = parseInt(value, 10);
+//         break;
+//     }
+//   }
+
+//   if (userId < 0) {
+//     // Redirect to login page if userId is not set
+//     window.location.href = "login.html";
+//   } else {
+//     // Display welcome message if userId is set
+//     document.getElementById("intro").innerHTML =
+//       "Welcome, ${firstName} ${lastName}!";
+//   }
+// }
 
 // function doLogout() {
 //   userId = 0;
@@ -625,50 +683,53 @@ let modal = document.getElementById("contactModal");
 
 // When the user clicks the edit or add button, open the modal
 function contactButtonClick(intbtnPressed) {
-    let span = document.getElementsByClassName("close")[0];
+  let span = document.getElementsByClassName("close")[0];
 
-    modal.style.display = "block";
+  modal.style.display = "block";
 
-    span.onclick = function() {
-        modal.style.display = "none";
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modalContent) {
+      addModal.style.display = "none";
     }
+  };
 
-    window.oncick = function(event) {
-        if (event.target == modalContent) {
-            addModal.style.display = "none";
-        }
-    }
+  // add contact
+  if (intbtnPressed === 1) {
+    document.getElementById("modal-title").textContent = "Add Contact";
+    document.getElementById("addNewContactButton").textContent =
+      "Add New Contact";
+    var name = document.getElementById("add-name");
+    var phone = document.getElementById("edit-phone");
+    var email = document.getElementById("edit-email");
+  }
 
-    // add contact
-    if (intbtnPressed === 1) {
-        document.getElementById('modal-title').textContent = 'Add Contact';
-        document.getElementById('addNewContactButton').textContent = 'Add New Contact';
-        var name = document.getElementById('add-name');
-        var phone = document.getElementById('edit-phone');
-        var email = document.getElementById('edit-email');
-    }
+  // edit contact
+  if (intbtnPressed === 2) {
+    document.getElementById("modal-title").textContent = "Edit Contact";
+    document.getElementById("addNewContactButton").textContent = "Save Changes";
+    var name = (document.getElementById("add-name").value = "random person");
+    var phone = (document.getElementById("add-phone").value = "123-456-7890");
+    var email = (document.getElementById("add-email").value = "email@www.com");
+  }
 
-    // edit contact
-    if (intbtnPressed === 2) {
-        document.getElementById('modal-title').textContent = 'Edit Contact';
-        document.getElementById('addNewContactButton').textContent = 'Save Changes';
-        var name = document.getElementById('add-name').value = "random person";
-        var phone = document.getElementById('add-phone').value = "123-456-7890";
-        var email = document.getElementById('add-email'). value = "email@www.com";
-    }
-
-    console.log('Edit or Add button clicked');
+  console.log("Edit or Add button clicked");
 }
 
 // Add event listeners to the add and edit buttons
-addContactbtn.addEventListener('click', function() { contactButtonClick(1); });
-editContactbtn.addEventListener('click', function() { contactButtonClick(2); });
+addContactbtn.addEventListener("click", function () {
+  contactButtonClick(1);
+});
+editContactbtn.addEventListener("click", function () {
+  contactButtonClick(2);
+});
 
-deleteContactbtn.onclick = function() {
-    confirm('Delete button clicked');
-}
-
-
+deleteContactbtn.onclick = function () {
+  confirm("Delete button clicked");
+};
 
 // Setting the welcome message
 // let intro = document.getElementById("intro");

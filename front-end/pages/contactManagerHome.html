@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width= device-width, initial-scale=1.0" />
+    <script type="text/javascript">
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          loadData();
+          logUserId();
+        },
+        false
+      );
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <!-- <title>Cosmic Contacts</title> -->
     <link rel="stylesheet" href="..\styles\styleContactManagerHome.css" />
@@ -16,11 +30,10 @@
     <link rel="stylesheet" href="styles\styleContactManagerView.css" />
     <link rel="stylesheet" href="styles\styleContactManagerViewAll.css" />
     <link rel="stylesheet" href="styles\styleContactManagerViewAllResults.css" /> -->
-    
+
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
     crossorigin="anonymous"> -->
-
 
     <!-- <script src="scripts\scriptContactManagerAdd.js"></script>
     <script src="scripts\scriptContactManagerEdit.js"></script>
@@ -32,80 +45,95 @@
     <script src="scripts\scriptContactManagerViewAllResults.js"></script>
     <script src="scripts\scriptContactManagerHome.js"></script> -->
 
-
     <nav class="header-bar">
-          <div class="nav-div">
-            <div class="intro"><a href="#">Welcome, username</a> </div>
-              <div class = "search-container">
-                  <input 
-                    type="text" 
-                    class="searchbar-input"
-                    id = "searchinput"
-                    placeholder="Search.." 
-                    name="search">
-                    <button type="image" class="btn-search"></button>
-                </div>
-            <div class ="button-container">
-            <button type="button" id="addContactButton" class="btn-add" >Add Contact</button>
-            <button type="button" class="btn-logout" onclick="window.location.href='../pages/login.html'">Logout</button>
-            </div>
-          </div>
+      <div class="nav-div">
+        <div class="intro"><a href="#">Welcome, username</a></div>
+        <div class="search-container">
+          <input
+            type="text"
+            class="searchbar-input"
+            id="searchinput"
+            placeholder="Search.."
+            name="search"
+          />
+          <button type="image" class="btn-search"></button>
+        </div>
+        <div class="button-container">
+          <button type="button" id="addContactButton" class="btn-add">
+            Add Contact
+          </button>
+          <button
+            type="button"
+            class="btn-logout"
+            onclick="window.location.href='../pages/login.html'"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
     </nav>
-      
   </head>
 
   <body>
-
     <!-- Add/Edit Contact Modal -->
     <div id="contactModal" class="modal">
-      <div id= "modalContent" class="modal-content">
-        <div class = "modal-header">
-          <h2 id = "modal-title"></h2>
+      <div id="modalContent" class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title"></h2>
           <span class="close">&times;</span>
         </div>
 
         <label for="add-name">Contact Name:</label>
-        <input type="text" id="add-name" class = "modal-name" name="newContactName">
+        <input
+          type="text"
+          id="add-name"
+          class="modal-name"
+          name="newContactName"
+        />
         <label for="add-phone">Phone Number:</label>
-        <input type="text" id="add-phone" class = "modal-phone" name="newContactPhone">
+        <input
+          type="text"
+          id="add-phone"
+          class="modal-phone"
+          name="newContactPhone"
+        />
         <label for="add-email">Email:</label>
-        <input type="text" id="add-email" class = "modal-email" name="newContactEmail">
+        <input
+          type="text"
+          id="add-email"
+          class="modal-email"
+          name="newContactEmail"
+        />
         <button id="addNewContactButton"></button>
       </div>
     </div>
 
-    
     <!-- Contacts Container -->
-    <div class ="contacts-container">
-      <div class = "contacts-header">
+    <div class="contacts-container">
+      <div class="contacts-header">
         <h3 id="header-name">Contact Name</h3>
         <h3 id="header-phoneNumber">Phone Number</h3>
         <h3 id="header-email">Email</h3>
         <h3 id="header-edit">Edit</h3>
         <h3 id="header-delete">Delete</h3>
       </div>
-      <div class = "contacts">
-        <div class = "contact-person">
-          <h4 id ="contact-name">Random Person</h4>
-          <h4 id = "contact-phoneNumber">+1 (123) 456-7890</h4>
-          <h4 id = "contact-email"> random.person@gmail.com </h4>
-          <button type="button" id = "contact-editBtn" class="btn-edit">Edit</button>
-          <h4 id = "contact-spacer">|</h4>
-          <button type="button" id = "contact-deleteBtn" class="btn-delete">Delete</button>
+      <div class="contacts">
+        <div class="contact-person">
+          <h4 id="contact-name">Random Person</h4>
+          <h4 id="contact-phoneNumber">+1 (123) 456-7890</h4>
+          <h4 id="contact-email">random.person@gmail.com</h4>
+          <button type="button" id="contact-editBtn" class="btn-edit">
+            Edit
+          </button>
+          <h4 id="contact-spacer">|</h4>
+          <button type="button" id="contact-deleteBtn" class="btn-delete">
+            Delete
+          </button>
         </div>
       </div>
     </div>
 
     <!-- <script src="..\scripts\scriptContactManagerHome.js"></script> -->
     <script src="..\scripts\code.js"></script>
-    
-    <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function () {
-          readCookie();
-          // loadContacts();
-      }, false);
-  </script>
-
   </body>
-
 </html>
