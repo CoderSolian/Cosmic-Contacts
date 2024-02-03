@@ -248,17 +248,17 @@ function loadData() {
 //   window.location.href = "index.html";
 // }
 
-// function showTable() {
-//   var x = document.getElementById("addMe");
-//   var contacts = document.getElementById("contactsTable");
-//   if (x.style.display === "none") {
-//     x.style.display = "block";
-//     contacts.style.display = "none";
-//   } else {
-//     x.style.display = "none";
-//     contacts.style.display = "block";
-//   }
-// }
+function showTable() {
+  var x = document.getElementById("contactModal");
+  var contacts = document.getElementById("tbody");
+  if (contacts.style.display === "none") {
+    contacts.style.display = "block";
+    x.style.display = "none";
+  } else {
+    contacts.style.display = "none";
+    x.style.display = "block";
+  }
+}
 
 function addContact() {
   let name = document.getElementById("add-name").value;
@@ -286,7 +286,9 @@ function addContact() {
       if (this.readyState == 4 && this.status == 200) {
         console.log("Contact has been added");
         // Clear input fields in form
-        document.getElementById("addMe").reset();
+        document.getElementById("add-name").value = "";
+        document.getElementById("add-phone").value = "";
+        document.getElementById("add-email").value = "";
         // reload contacts table and switch view to show
         loadContacts();
         showTable();
@@ -319,7 +321,8 @@ function loadContacts() {
           return;
         }
         let text = "<table class= 'contacts-container' border='1'>";
-        text += "<thead> <tr> <th>Name</th> <th>Email</th> <th>Phone</th> <th>Actions</th> </tr> </thead>";
+        text +=
+          "<thead> <tr> <th>Name</th> <th>Email</th> <th>Phone</th> <th>Actions</th> </tr> </thead>";
         for (let i = 0; i < jsonObject.results.length; i++) {
           ids[i] = jsonObject.results[i].ID;
           text += "<tr id='row" + i + "'>";
@@ -341,10 +344,28 @@ function loadContacts() {
             "'><span>" +
             jsonObject.results[i].Phone +
             "</span></td>";
-            text += "<td>" +
-              "<button type='button' id='contact-editBtn class='btn-edit'" + i + " onclick='edit_row(" + i + ")'>" + "Edit" + "</button>" +
-              "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
-              "<button type='button' onclick='delete_row(" + i + ")' id ='contact-deleteBtn' class = 'btn-delete'>" + "Delete" + "</button>" + "</td>";
+          text +=
+            "<td>" +
+            "<button type='button' id='edit_button" +
+            i +
+            "' class='w3-button w3-circle w3-lime' onclick='edit_row(" +
+            i +
+            ")'>" +
+            "<span class='glyphicon glyphicon-edit'></span>" +
+            "</button>" +
+            "<button type='button' id='save_button" +
+            i +
+            "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" +
+            i +
+            ")' style='display: none;'>" +
+            "<span class='glyphicon glyphicon-saved'></span>" +
+            "</button>" +
+            "<button type='button' onclick='delete_row(" +
+            i +
+            ")' class='w3-button w3-circle w3-amber'>" +
+            "<span class='glyphicon glyphicon-trash'></span> " +
+            "</button>" +
+            "</td>";
           text += "<tr/>";
         }
         text += "</table>";
@@ -358,74 +379,85 @@ function loadContacts() {
 }
 
 function edit_row(id) {
-  document.getElementById("contact-editBtn" + id).style.display = "none";
+  document.getElementById("edit_button" + id).style.display = "none";
   document.getElementById("save_button" + id).style.display = "inline-block";
 
   var name = document.getElementById("name" + id);
   var email = document.getElementById("email" + id);
   var phone = document.getElementById("phone" + id);
 
-  var namef_data = name.innerText;
+  var name_data = name.innerText;
   var email_data = email.innerText;
   var phone_data = phone.innerText;
 
   name.innerHTML =
-    "<input type='text' id='namel_text" + id + "' value='" + namel_data + "'>";
+    "<input type='text' id='name_text" +
+    id +
+    "' value='" +
+    name_data +
+    "' style='color: black'>";
   email.innerHTML =
-    "<input type='text' id='email_text" + id + "' value='" + email_data + "'>";
+    "<input type='text' id='email_text" +
+    id +
+    "' value='" +
+    email_data +
+    "' style='color: black'>";
   phone.innerHTML =
-    "<input type='text' id='phone_text" + id + "' value='" + phone_data + "'>";
+    "<input type='text' id='phone_text" +
+    id +
+    "' value='" +
+    phone_data +
+    "' style='color: black'>";
 }
 
-// function save_row(no) {
-//   var namef_val = document.getElementById("namef_text" + no).value;
-//   var namel_val = document.getElementById("namel_text" + no).value;
-//   var email_val = document.getElementById("email_text" + no).value;
-//   var phone_val = document.getElementById("phone_text" + no).value;
-//   var id_val = ids[no];
+function save_row(no) {
+  var name_val = document.getElementById("name_text" + no).value;
+  var email_val = document.getElementById("email_text" + no).value;
+  var phone_val = document.getElementById("phone_text" + no).value;
+  var id_val = ids[no];
 
-//   document.getElementById("first_Name" + no).innerHTML = namef_val;
-//   document.getElementById("last_Name" + no).innerHTML = namel_val;
-//   document.getElementById("email" + no).innerHTML = email_val;
-//   document.getElementById("phone" + no).innerHTML = phone_val;
+  document.getElementById("name" + no).innerHTML = name_val;
+  document.getElementById("email" + no).innerHTML = email_val;
+  document.getElementById("phone" + no).innerHTML = phone_val;
 
-//   document.getElementById("edit_button" + no).style.display = "inline-block";
-//   document.getElementById("save_button" + no).style.display = "none";
+  document.getElementById("edit_button" + no).style.display = "inline-block";
+  document.getElementById("save_button" + no).style.display = "none";
 
-//   let tmp = {
-//     phoneNumber: phone_val,
-//     emailAddress: email_val,
-//     newFirstName: namef_val,
-//     newLastName: namel_val,
-//     id: id_val,
-//   };
+  console.log("name_val: " + name_val);
+  console.log("userId: " + userId);
+  console.log("contactId: " + id_val);
+  let tmp = {
+    ID: id_val,
+    NAME: name_val,
+    PHONE: phone_val,
+    EMAIL: email_val,
+    USERID: userId,
+  };
 
-//   let jsonPayload = JSON.stringify(tmp);
+  let jsonPayload = JSON.stringify(tmp);
+  console.log(jsonPayload);
+  let url = urlBase + "update_contact." + extension;
 
-//   let url = urlBase + "/UpdateContacts." + extension;
-
-//   let xhr = new XMLHttpRequest();
-//   xhr.open("POST", url, true);
-//   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//   try {
-//     xhr.onreadystatechange = function () {
-//       if (this.readyState == 4 && this.status == 200) {
-//         console.log("Contact has been updated");
-//         loadContacts();
-//       }
-//     };
-//     xhr.send(jsonPayload);
-//   } catch (err) {
-//     console.log(err.message);
-//   }
-// }
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("Contact has been updated");
+        loadContacts();
+      }
+    };
+    xhr.send(jsonPayload);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
 
 function delete_row(no) {
   var namef_val = document.getElementById("name" + no).innerText;
-  
-  let check = confirm(
-    "Confirm deletion of contact: " + namef_val
-  );
+
+  let check = confirm("Confirm deletion of contact: " + namef_val);
   if (check === true) {
     document.getElementById("row" + no + "").outerHTML = "";
     let tmp = {
@@ -453,52 +485,47 @@ function delete_row(no) {
   }
 }
 
-// function searchContacts() {
-//   const content = document.getElementById("searchText");
-//   const selections = content.value.toUpperCase().split(" ");
-//   const table = document.getElementById("contacts");
-//   const tr = table.getElementsByTagName("tr"); // Table Row
+function searchContacts() {
+  const content = document.getElementById("searchinput");
+  const selections = content.value.toUpperCase().split(" ");
+  // const table = document.getElementsByClassName("contacts-container");
+  const tr = document.getElementsByTagName("tr"); // Table Row
 
-//   for (let i = 0; i < tr.length; i++) {
-//     const td_fn = tr[i].getElementsByTagName("td")[0]; // Table Data: First Name
-//     const td_ln = tr[i].getElementsByTagName("td")[1]; // Table Data: Last Name
+  for (let i = 0; i < tr.length; i++) {
+    const td_name = tr[i].getElementsByTagName("td")[0]; // Table Data: First Name
 
-//     if (td_fn && td_ln) {
-//       const txtValue_fn = td_fn.textContent || td_fn.innerText;
-//       const txtValue_ln = td_ln.textContent || td_ln.innerText;
-//       tr[i].style.display = "none";
+    if (td_name) {
+      const txtValue_name = td_name.textContent || td_name.innerText;
+      tr[i].style.display = "none";
 
-//       for (selection of selections) {
-//         if (txtValue_fn.toUpperCase().indexOf(selection) > -1) {
-//           tr[i].style.display = "";
-//         }
-//         if (txtValue_ln.toUpperCase().indexOf(selection) > -1) {
-//           tr[i].style.display = "";
-//         }
-//       }
-//     }
-//   }
-// }
+      for (selection of selections) {
+        if (txtValue_name.toUpperCase().indexOf(selection) > -1) {
+          tr[i].style.display = "";
+        }
+      }
+    }
+  }
+}
 
-// function clickLogin() {
-//   var log = document.getElementById("login");
-//   var reg = document.getElementById("signup");
-//   var but = document.getElementById("btn");
+function clickLogin() {
+  var log = document.getElementById("login");
+  var reg = document.getElementById("signup");
+  var but = document.getElementById("btn");
 
-//   log.style.left = "-400px";
-//   reg.style.left = "0px";
-//   but.style.left = "130px";
-// }
+  log.style.left = "-400px";
+  reg.style.left = "0px";
+  but.style.left = "130px";
+}
 
-// function clickRegister() {
-//   var log = document.getElementById("login");
-//   var reg = document.getElementById("signup");
-//   var but = document.getElementById("btn");
+function clickRegister() {
+  var log = document.getElementById("login");
+  var reg = document.getElementById("signup");
+  var but = document.getElementById("btn");
 
-//   reg.style.left = "-400px";
-//   log.style.left = "0px";
-//   but.style.left = "0px";
-// }
+  reg.style.left = "-400px";
+  log.style.left = "0px";
+  but.style.left = "0px";
+}
 
 function validLoginForm(logName, logPass) {
   var logNameErr = (logPassErr = true);
@@ -586,55 +613,55 @@ function validSignUpForm(fName, lName, user, pass) {
   return true;
 }
 
-// function validAddContact(firstName, lastName, phone, email) {
-//   var fNameErr = (lNameErr = phoneErr = emailErr = true);
+function validAddContact(firstName, lastName, phone, email) {
+  var fNameErr = (lNameErr = phoneErr = emailErr = true);
 
-//   if (firstName == "") {
-//     console.log("FIRST NAME IS BLANK");
-//   } else {
-//     console.log("first name IS VALID");
-//     fNameErr = false;
-//   }
+  if (firstName == "") {
+    console.log("FIRST NAME IS BLANK");
+  } else {
+    console.log("first name IS VALID");
+    fNameErr = false;
+  }
 
-//   if (lastName == "") {
-//     console.log("LAST NAME IS BLANK");
-//   } else {
-//     console.log("LAST name IS VALID");
-//     lNameErr = false;
-//   }
+  if (lastName == "") {
+    console.log("LAST NAME IS BLANK");
+  } else {
+    console.log("LAST name IS VALID");
+    lNameErr = false;
+  }
 
-//   if (phone == "") {
-//     console.log("PHONE IS BLANK");
-//   } else {
-//     var regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+  if (phone == "") {
+    console.log("PHONE IS BLANK");
+  } else {
+    var regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
 
-//     if (regex.test(phone) == false) {
-//       console.log("PHONE IS NOT VALID");
-//     } else {
-//       console.log("PHONE IS VALID");
-//       phoneErr = false;
-//     }
-//   }
+    if (regex.test(phone) == false) {
+      console.log("PHONE IS NOT VALID");
+    } else {
+      console.log("PHONE IS VALID");
+      phoneErr = false;
+    }
+  }
 
-//   if (email == "") {
-//     console.log("EMAIL IS BLANK");
-//   } else {
-//     var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+  if (email == "") {
+    console.log("EMAIL IS BLANK");
+  } else {
+    var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
-//     if (regex.test(email) == false) {
-//       console.log("EMAIL IS NOT VALID");
-//     } else {
-//       console.log("EMAIL IS VALID");
-//       emailErr = false;
-//     }
-//   }
+    if (regex.test(email) == false) {
+      console.log("EMAIL IS NOT VALID");
+    } else {
+      console.log("EMAIL IS VALID");
+      emailErr = false;
+    }
+  }
 
-//   if ((phoneErr || emailErr || fNameErr || lNameErr) == true) {
-//     return false;
-//   }
+  if ((phoneErr || emailErr || fNameErr || lNameErr) == true) {
+    return false;
+  }
 
-//   return true;
-// }
+  return true;
+}
 
 // Get buttons
 
@@ -648,12 +675,14 @@ let modal = document.getElementById("contactModal");
 
 // When the user clicks the edit or add button, open the modal
 function contactButtonClick(intbtnPressed) {
+  showTable();
   let span = document.getElementsByClassName("close")[0];
 
   modal.style.display = "block";
 
   span.onclick = function () {
     modal.style.display = "none";
+    showTable();
   };
 
   window.onclick = function (event) {
@@ -696,5 +725,9 @@ deleteContactbtn.onclick = function () {
 };
 
 // Setting the welcome message
-// let intro = document.getElementById("intro");
-// intro.textContent = 'Welcome, ' + userID + '!';
+
+function loadIntro() {
+  let intro = document.getElementById("intro-message");
+  intro.innerHTML =
+    "Welcome, " + firstName + " " + lastName.substring(0, 1) + ".";
+}
