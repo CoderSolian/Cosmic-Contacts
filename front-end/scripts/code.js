@@ -730,5 +730,9 @@ deleteContactbtn.onclick = function () {
 function loadIntro() {
   let intro = document.getElementById("intro-message");
   intro.innerHTML =
-    "Welcome, <u> " + firstName + " " + lastName.substring(0, 1) + "</u>.";
+    "Welcome, <u id='intro-messagename'> " +
+    firstName +
+    " " +
+    lastName.substring(0, 1) +
+    "</u>.";
 }
