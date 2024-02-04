@@ -147,6 +147,7 @@ body {
 
 #register-message {
   color: rgba(255, 255, 255, 0.83);
+  padding-left: 10px;
   margin: 2rem 0 4rem 0;
 }
 #register-link {
