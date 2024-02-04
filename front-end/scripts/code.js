@@ -320,12 +320,12 @@ function loadContacts() {
           console.log(jsonObject.error);
           return;
         }
-        let text = "<table class= 'contacts-container' border='1'>";
+        let text = "<table class= 'contacts-container'>";
         text +=
           "<thead> <tr> <th>Name</th> <th>Email</th> <th>Phone</th> <th>Actions</th> </tr> </thead>";
         for (let i = 0; i < jsonObject.results.length; i++) {
           ids[i] = jsonObject.results[i].ID;
-          text += "<tr id='row" + i + "'>";
+          text += "<tr class='contact-row' id='row" + i + "'>";
           text +=
             "<td id='name" +
             i +
