@@ -86,8 +86,28 @@ body {
   border-bottom-color: #ffffff;
 }
 
+#password {
+  margin-bottom: 1rem;
+}
+
+#showpass {
+  font-size: 15px;
+  padding: 0 10px 0 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#showbox {
+  transform: scale(1.25); /* Adjust the scale value as needed */
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#showbox:checked {
+  transform: scale(1.5); /* Adjust the scale value as needed */
+}
+
 .buttons {
-  padding: 1rem 0 4rem 4rem;
+  padding: 0 0 4rem 4rem;
   width: 100%;
   /* height: 100%; */
 }

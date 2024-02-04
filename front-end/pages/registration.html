@@ -43,7 +43,7 @@
             required
           />
         </div>
-        <div class="login-field">
+        <div class="login-field" id="password-field">
           <input
             type="password"
             class="login-input"
@@ -52,6 +52,10 @@
             placeholder="Enter your password"
             required
           />
+          <div>
+            <span id="showpass"> Show password </span>
+            <input id="showbox" type="checkbox" onclick="showPassword()" />
+          </div>
         </div>
         <!-- signup result -->
         <span
