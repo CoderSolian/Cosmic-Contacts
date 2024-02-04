@@ -392,23 +392,11 @@ function edit_row(id) {
   var phone_data = phone.innerText;
 
   name.innerHTML =
-    "<input type='text' id='name_text" +
-    id +
-    "' value='" +
-    name_data +
-    "' style='color: black'>";
+    "<input type='text' id='name_text" + id + "' value='" + name_data + "'>";
   email.innerHTML =
-    "<input type='text' id='email_text" +
-    id +
-    "' value='" +
-    email_data +
-    "' style='color: black'>";
+    "<input type='text' id='email_text" + id + "' value='" + email_data + "'>";
   phone.innerHTML =
-    "<input type='text' id='phone_text" +
-    id +
-    "' value='" +
-    phone_data +
-    "' style='color: black'>";
+    "<input type='text' id='phone_text" + id + "' value='" + phone_data + "'>";
 }
 
 function save_row(no) {
@@ -695,8 +683,7 @@ function contactButtonClick(intbtnPressed) {
   // add contact
   if (intbtnPressed === 1) {
     document.getElementById("modal-title").textContent = "Add Contact";
-    document.getElementById("addNewContactButton").textContent =
-      "Add New Contact";
+    document.getElementById("addNewContactButton").textContent = "Add";
     addNewContactBtn = document.getElementById("addNewContactButton");
     addNewContactBtn.onclick = addContact;
   }
