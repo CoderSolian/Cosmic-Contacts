@@ -239,13 +239,13 @@ function loadData() {
 //   }
 // }
 
-function doLogout() {
-  userId = 0;
-  firstName = "";
-  lastName = "";
+// function doLogout() {
+//   userId = 0;
+//   firstName = "";
+//   lastName = "";
 
-  window.location.href = "login.html";
-}
+//   window.location.href = "login.html";
+// }
 
 function showTable() {
   var x = document.getElementById("contactModal");
