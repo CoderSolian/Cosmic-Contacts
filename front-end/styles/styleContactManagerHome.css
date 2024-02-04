@@ -283,6 +283,20 @@ button {
   animation: fadeIn 1s ease-in-out; /* Fade-in animation */
 }
 
+table::-webkit-scrollbar {
+  width: 10px;
+  background: #00000000;
+}
+table::-webkit-scrollbar-thumb {
+  background: #747474dc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8b8b8;
+}
+table::-webkit-scrollbar-thumb:window-inactive {
+  background: #555;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0.7;
