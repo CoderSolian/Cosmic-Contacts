@@ -699,6 +699,18 @@ function contactButtonClick(intbtnPressed) {
   console.log("Edit or Add button clicked");
 }
 
+// Add event listeners to the add and edit buttons
+addContactbtn.addEventListener("click", function () {
+  contactButtonClick(1);
+});
+// editContactbtn.addEventListener("click", function () {
+//   contactButtonClick(2);
+// });
+
+// deleteContactbtn.onclick = function () {
+//   confirm("Delete button clicked");
+// };
+
 // Setting the welcome message
 
 function loadIntro() {
