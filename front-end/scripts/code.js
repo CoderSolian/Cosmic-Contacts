@@ -368,6 +368,7 @@ function loadContacts() {
             "</td>";
           text += "<tr/>";
         }
+        text += "<tr id='tr-filler'></tr>";
         text += "</table>";
         document.getElementById("tbody").innerHTML = text;
       }
@@ -729,5 +730,5 @@ deleteContactbtn.onclick = function () {
 function loadIntro() {
   let intro = document.getElementById("intro-message");
   intro.innerHTML =
-    "Welcome, " + firstName + " " + lastName.substring(0, 1) + ".";
+    "Welcome, <u> " + firstName + " " + lastName.substring(0, 1) + "</u>.";
 }

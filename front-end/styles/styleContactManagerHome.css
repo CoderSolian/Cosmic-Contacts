@@ -8,12 +8,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Nasalization", sans-serif;
-  text-decoration: none;
   color: white;
 }
 body {
   background-image: url("https://img.freepik.com/premium-photo/stars-galaxy-outer-space-sky-night-universe-black-starry-shiny-starfield_146539-1356.jpg");
   background-size: 42%;
+}
+
+#tr-filler {
+  height: 100%;
 }
 
 .nav-div {
@@ -176,13 +179,16 @@ button {
 .contacts-container {
   color: #ffffff;
   position: absolute;
-  right: 0;
   width: 70%;
   height: 70%;
   overflow: auto;
   margin-top: 4rem;
   margin-right: 1rem;
   margin-bottom: 3rem;
+
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: radial-gradient(
