@@ -53,7 +53,7 @@ td {
 button {
   background-color: rgba(0, 0, 0, 0.589);
   /* margin-left: 10px;  */
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 5px;
   width: 90px;
   transition: 0.2s;
@@ -61,11 +61,13 @@ button {
 
 .edit-btn {
   background-color: #6262635e;
+  border-left: 1px solid #fff;
   color: white;
   /* padding: 5px; */
   transition: 0.2s;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .edit-btn:active,
@@ -77,6 +79,8 @@ button {
 }
 
 .delete-btn {
+  border-left: 1px solid #fff;
+  cursor: pointer;
   transition: 0.2s;
 }
 
@@ -89,6 +93,8 @@ button {
 }
 
 .save-btn {
+  border-left: 1px solid #fff;
+  cursor: pointer;
   background-color: #31632a5e;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
@@ -118,13 +124,13 @@ button {
 
 .btn-search {
   position: absolute;
-  height: 30px;
+  height: 20px;
   right: 0.3rem;
-  top: 0.3rem;
+  top: 0.6rem;
   border: none;
   background: url("../icons/magnifying-glass-color-white.png") no-repeat center
     center;
-  width: 40px;
+  width: 30px;
   border-radius: 0;
   background-size: contain;
 }
@@ -192,6 +198,14 @@ button {
   /* margin-left: auto; */
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-add:active,
+.btn-add:focus,
+.btn-add:hover {
+  text-decoration: underline;
 }
 
 .btn-logout {
@@ -202,6 +216,14 @@ button {
   background: #1c1c1c;
   font-size: 12px;
   border-radius: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-logout:active,
+.btn-logout:focus,
+.btn-logout:hover {
+  text-decoration: underline;
 }
 
 .btn-delete,
