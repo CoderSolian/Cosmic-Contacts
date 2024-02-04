@@ -239,14 +239,13 @@ function loadData() {
 //   }
 // }
 
-// function doLogout() {
-//   userId = 0;
-//   firstName = "";
-//   lastName = "";
+function doLogout() {
+  userId = 0;
+  firstName = "";
+  lastName = "";
 
-//   document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-//   window.location.href = "index.html";
-// }
+  window.location.href = "login.html";
+}
 
 function showTable() {
   var x = document.getElementById("contactModal");
@@ -320,7 +319,7 @@ function loadContacts() {
           console.log(jsonObject.error);
           return;
         }
-        let text = "<table class= 'contacts-container'>";
+        let text = "<table class='contacts-container'>";
         text +=
           "<thead> <tr> <th>Name</th> <th>Email</th> <th>Phone</th> <th>Actions</th> </tr> </thead>";
         for (let i = 0; i < jsonObject.results.length; i++) {
@@ -699,18 +698,6 @@ function contactButtonClick(intbtnPressed) {
 
   console.log("Edit or Add button clicked");
 }
-
-// Add event listeners to the add and edit buttons
-addContactbtn.addEventListener("click", function () {
-  contactButtonClick(1);
-});
-editContactbtn.addEventListener("click", function () {
-  contactButtonClick(2);
-});
-
-deleteContactbtn.onclick = function () {
-  confirm("Delete button clicked");
-};
 
 // Setting the welcome message
 
