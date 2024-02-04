@@ -317,6 +317,10 @@ function loadContacts() {
         let jsonObject = JSON.parse(xhr.responseText);
         if (jsonObject.error) {
           console.log(jsonObject.error);
+          let text = "<table class='contacts-container'>";
+          text +=
+            "<tr><td id='nocontacts' colspan='4'>No contacts found.</td></tr>";
+          document.getElementById("tbody").innerHTML = text;
           return;
         }
         let text = "<table class='contacts-container'>";
