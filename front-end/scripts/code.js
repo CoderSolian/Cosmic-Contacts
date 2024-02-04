@@ -348,22 +348,22 @@ function loadContacts() {
             "<td>" +
             "<button type='button' id='edit_button" +
             i +
-            "' class='w3-button w3-circle w3-lime' onclick='edit_row(" +
+            "' class='edit-btn' onclick='edit_row(" +
             i +
             ")'>" +
-            "<span class='glyphicon glyphicon-edit'></span>" +
+            "Edit" +
             "</button>" +
             "<button type='button' id='save_button" +
             i +
-            "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" +
+            "' value='Save' class='save-btn' onclick='save_row(" +
             i +
             ")' style='display: none;'>" +
-            "<span class='glyphicon glyphicon-saved'></span>" +
+            "Save" +
             "</button>" +
             "<button type='button' onclick='delete_row(" +
             i +
-            ")' class='w3-button w3-circle w3-amber'>" +
-            "<span class='glyphicon glyphicon-trash'></span> " +
+            ")' class='delete-btn'>" +
+            "Delete " +
             "</button>" +
             "</td>";
           text += "<tr/>";
