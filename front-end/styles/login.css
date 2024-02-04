@@ -157,3 +157,20 @@ body {
   box-shadow: 0px 0px 53.8px 1px rgba(255, 255, 255, 0.3);
   text-decoration: underline;
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #00000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #747474dc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8b8b8;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #555;
+}
