@@ -15,6 +15,9 @@ body {
   background-size: 42%;
 }
 
+thead {
+  background: black;
+}
 #tr-filler {
   height: 100%;
 }
@@ -39,6 +42,12 @@ td {
 .intro a {
   font-size: 40px;
   color: white;
+}
+
+#intro-message {
+  font-size: 1.5rem;
+  color: white;
+  margin-left: 1rem;
 }
 
 button {
@@ -79,9 +88,14 @@ button {
   text-decoration: underline;
 }
 
-button:active,
-button:focus,
-button:hover {
+.save-btn {
+  background-color: #31632a5e;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+.save-btn:active,
+.save-btn:focus,
+.save-btn:hover {
   box-shadow: 0px 0px 13.8px 1px rgba(255, 255, 255, 0.3);
   text-decoration: underline;
 }
@@ -95,7 +109,7 @@ button:hover {
 .searchbar-input {
   padding: 10px;
   padding-right: 40px;
-  font-size: 25px;
+  font-size: 15px;
   height: 40px;
   flex-shrink: 0;
   border: 1px solid #fff;
@@ -127,11 +141,11 @@ button:hover {
   background-color: #31313156;
 } */
 
-.btn-search:active,
+/* .btn-search:active,
 .btn-search:focus,
 .btn-search:hover {
   box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 0.3);
-}
+} */
 
 .btn-add:active,
 .btn-add:focus,
@@ -239,11 +253,7 @@ button:hover {
   transform: translate(-50%, -50%);
 
   border: 1px solid rgba(255, 255, 255, 0.5);
-  background: linear-gradient(
-    180deg,
-    rgba(44, 52, 58, 0.342) -46.36%,
-    #040507 94.48%
-  );
+  background: rgba(19, 19, 19, 0.877);
   box-shadow: 0px 0px 45.8px 50px rgba(0, 0, 0, 0.6);
 }
 
