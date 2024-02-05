@@ -135,8 +135,58 @@ function doSignup() {
     xhr.send(jsonPayload);
     document.getElementById("signupResult").innerHTML =
       "<span style='color: #6EFF2F;'>User registered successfully</span>";
+
+
+      setTimeout(function() {
+        console.log("redirecting to login...");
+        // window.location.href = "login.html";
+        redirectAfter();
+      }, 3000);
   } catch (err) {
     document.getElementById("signupResult").innerHTML = err.message;
+  }
+}
+
+function redirectAfter() {
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
+
+  let tmp = {
+    login: username,
+    password: password,
+  };
+
+  let jsonPayload = JSON.stringify(tmp);
+  let url = urlBase + "login." + extension;
+
+  let xhr = new XMLHttpRequest();
+  console.log(jsonPayload, url);
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try {
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let jsonObject = JSON.parse(xhr.responseText);
+        userId = jsonObject.id;
+        console.log("userIdjson: " + userId);
+        if (userId < 1) {
+          // document.getElementById("loginResult").innerHTML =
+          //   "User/Password combination incorrect";
+          return;
+        }
+        firstName = jsonObject.firstName;
+        lastName = jsonObject.lastName;
+        console.log("Welcome, " + userId + "!");
+
+        saveData();
+        window.location.href = "contactManagerHome.html";
+      }
+    };
+
+    xhr.send(jsonPayload);
+  } catch (err) {
+    // document.getElementById("loginResult").innerHTML = err.message;
+    console.log(err.message);
   }
 }
 
