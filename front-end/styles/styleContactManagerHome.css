@@ -26,6 +26,7 @@ thead {
 }
 
 th {
+  width: 35%;
   font-size: large;
   border: 0;
   padding: 0.5rem;

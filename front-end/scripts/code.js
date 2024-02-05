@@ -328,7 +328,13 @@ function loadContacts() {
           console.log(jsonObject.error);
           let text = "<table class='contacts-container'>";
           text +=
-            "<tr><td id='nocontacts' colspan='4'>No contacts found.</td></tr>";
+            "<thead> <tr> <th>Name</th> <th>Email</th> <th>Phone</th> <th>Actions</th> </tr> </thead>";
+          text += "<tr class='contact-row' id='row'>";
+
+          text += "<tr/>";
+          text += "<tr id='tr-filler'></tr>";
+          text += "</table>";
+
           document.getElementById("tbody").innerHTML = text;
           return;
         }
