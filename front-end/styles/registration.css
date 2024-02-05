@@ -116,7 +116,8 @@ body {
 
 #signupResult {
   margin: 0 0 0 4rem;
-  transition: 0.2s;
+  padding-left: 10px;
+  /* transition: 0.2s; */
 }
 
 .buttons {

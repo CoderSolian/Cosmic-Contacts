@@ -29,8 +29,7 @@ function doLogin() {
 
   // var hash = md5(password);
   if (!validLoginForm(login, password)) {
-    document.getElementById("loginResult").innerHTML =
-      "<span style='color: #FF2F2F;'>Invalid credentials</span>";
+    document.getElementById("loginResult").innerHTML = "Invalid credentials";
     return;
   }
   document.getElementById("loginResult").innerHTML = "";
