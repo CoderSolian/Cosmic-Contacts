@@ -136,10 +136,12 @@ function doSignup() {
     document.getElementById("signupResult").innerHTML =
       "<span style='color: #6EFF2F;'>User registered successfully</span>";
 
+      document.getElementById("mustcontain").innerHTML = "Redirecting to dashboard...";
+      document.getElementById("showpass-div").style.display = "none";
+      document.getElementById("mustcontain").style.color = "#ffffffcc";
+      console.log("redirecting to login...");
 
       setTimeout(function() {
-        console.log("redirecting to login...");
-        // window.location.href = "login.html";
         redirectAfter();
       }, 3000);
   } catch (err) {
