@@ -688,15 +688,16 @@ function contactButtonClick(intbtnPressed) {
   modal.style.display = "block";
 
   span.onclick = function () {
+    console.log("Close button clicked");
     modal.style.display = "none";
     showTable();
   };
 
-  window.onclick = function (event) {
-    if (event.target == modalContent) {
-      addModal.style.display = "none";
-    }
-  };
+  // window.onclick = function (event) {
+  //   if (event.target == modalContent) {
+  //     addModal.style.display = "none";
+  //   }
+  // };
 
   // add contact
   if (intbtnPressed === 1) {
@@ -715,12 +716,20 @@ function contactButtonClick(intbtnPressed) {
     var email = (document.getElementById("add-email").value = "email@www.com");
   }
 
-  console.log("Edit or Add button clicked");
+  console.log("Add Contact button clicked");
 }
 
-// Add event listeners to the add and edit buttons
+// Add event listeners to the add contact button
 addContactbtn.addEventListener("click", function () {
   contactButtonClick(1);
+});
+
+// Add event listeners to modal when enter is pressed
+modal.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    console.log("Enter pressed in modal");
+    addContact();
+  }
 });
 // editContactbtn.addEventListener("click", function () {
 //   contactButtonClick(2);
