@@ -378,6 +378,12 @@ function loadContacts() {
             "</button>" +
             "</td>";
           text += "<tr/>";
+
+          document.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+              save_row(i);
+            }
+          });
         }
         text += "<tr id='tr-filler'></tr>";
         text += "</table>";
