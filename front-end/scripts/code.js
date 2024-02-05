@@ -91,8 +91,6 @@ function doSignup() {
 
   // var hash = md5(password);
 
-  // document.getElementById("signupResult").innerHTML = "";
-
   let tmp = {
     FirstName: firstName,
     LastName: lastName,
@@ -129,10 +127,6 @@ function doSignup() {
       if (this.status == 200) {
         let jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
-        // document.getElementById("signupResult").innerHTML =
-        //   "<span style='color: #6EFF2F;'>User registered successfully</span>";
-        // document.getElementById("signupResult").innerHTML =
-        //   "User registered successfully";
         firstName = jsonObject.firstName;
         lastName = jsonObject.lastName;
         saveData();
@@ -693,12 +687,6 @@ function contactButtonClick(intbtnPressed) {
     showTable();
   };
 
-  // window.onclick = function (event) {
-  //   if (event.target == modalContent) {
-  //     addModal.style.display = "none";
-  //   }
-  // };
-
   // add contact
   if (intbtnPressed === 1) {
     document.getElementById("modal-title").textContent = "Add Contact";
@@ -720,24 +708,23 @@ function contactButtonClick(intbtnPressed) {
 }
 
 // Add event listeners to the add contact button
-addContactbtn.addEventListener("click", function () {
-  contactButtonClick(1);
-});
+if (addContactbtn) {
+  //this if statement checks if the button exists on the current page before adding the event listener
+  addContactbtn.addEventListener("click", function () {
+    contactButtonClick(1);
+  });
+}
 
 // Add event listeners to modal when enter is pressed
-modal.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    console.log("Enter pressed in modal");
-    addContact();
-  }
-});
-// editContactbtn.addEventListener("click", function () {
-//   contactButtonClick(2);
-// });
-
-// deleteContactbtn.onclick = function () {
-//   confirm("Delete button clicked");
-// };
+if (modal) {
+  //this if statement checks if the modal exists on the current page before adding the event listener
+  modal.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      console.log("Enter pressed in modal");
+      addContact();
+    }
+  });
+}
 
 // Setting the welcome message
 
