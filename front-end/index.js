@@ -1,23 +1,49 @@
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
-http.createServer(function (req, res) {
-  // Extract the file name from the request URL
-  var fileName = req.url === '/' ? 'index.html' : req.url;
-  // Construct the file path
-  var filePath = path.join(__dirname, fileName);
-  
-  // Read the content of the requested file
-  fs.readFile(filePath, function(err, data) {
+// Create a simple HTTP server
+const server = http.createServer((req, res) => {
+  let filePath = '.' + req.url;
+
+  // finds landing page and appends pages to redirects
+  if (filePath === './') {
+    filePath = './pages/login.html';
+  }else if(path.extname(filePath) === '.html'){
+    filePath = './pages/' + filePath
+  }
+ 
+  // Read the file and serve it
+  fs.readFile(filePath, (err, content) => {
     if (err) {
-      // Handle error, such as file not found
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      res.end('404 Not Found');
+      if (err.code === 'ENOENT') {
+        // File not found
+        res.writeHead(404);
+        res.end('File not found!');
+      } else {
+        // Other server error
+        res.writeHead(500);
+        res.end('Server error: ' + err.code);
+      }
     } else {
-      // Serve the HTML content
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end(data);
+      // Determine the content type based on file extension
+      const extname = path.extname(filePath);
+      let contentType = 'text/html';
+      if (extname === '.css') {
+        contentType = 'text/css';
+      }
+
+      // Serve the file with appropriate content type
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(content, 'utf-8');
     }
   });
-}).listen(8080);
+});
+
+// Define the port
+const port =  8080;
+
+// Start the server
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
