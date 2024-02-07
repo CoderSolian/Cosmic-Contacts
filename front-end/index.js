@@ -1,16 +1,16 @@
-// const https = require('https');
-const http = require('http');
+const https = require('https');
+// const http = require('http');
 
 const fs = require('fs');
 const path = require('path');
 
-// const options = {
-//   key: fs.readFileSync(path.join(__dirname, 'key.pem')),
-//   cert: fs.readFileSync(path.join(__dirname, 'cert.pem'))
-// };
+const options = {
+  key: fs.readFileSync(path.join(__dirname, 'key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'cert.pem'))
+};
 // Create a simple HTTP server
-// const server = https.createServer(options, (req, res) => {
-const server = http.createServer( (req, res) => {
+const server = https.createServer(options, (req, res) => {
+// const server = http.createServer( (req, res) => {
 
   let filePath = '.' + req.url;
 
