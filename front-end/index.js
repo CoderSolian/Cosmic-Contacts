@@ -49,8 +49,8 @@ const server = https.createServer(options, (req, res) => {
 });
 
 // Define the port
-// const port =  443;
-const port =  80;
+const port =  443;
+// const port =  80;
 
 
 // Start the server
